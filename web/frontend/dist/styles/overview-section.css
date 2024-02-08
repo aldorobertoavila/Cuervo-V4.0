@@ -1,27 +1,5 @@
 @charset "utf-8";
 
-.page {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #eceff1;
-    color: #000;
-}
-
-.page-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-}   
-
-.page-header__title {
-    margin: 0;
-}
-
-.page-content {
-    padding: 20px;
-}
-
 .overview-section {
     display: flex;
     flex-wrap: wrap;
@@ -64,17 +42,17 @@
 
 @media screen and (max-width: 750px) {
     .overview-section__card {
-      max-width: calc(50% - 20px);
+        max-width: calc(50% - 20px);
     }
-  }
-  
-  @media screen and (min-width: 750px) {
-    .overview-section__card {
-      max-width: calc(25% - 20px);
-    }
-  }
+}
 
-  .overview-section__compass {
+@media screen and (min-width: 750px) {
+    .overview-section__card {
+        max-width: calc(25% - 20px);
+    }
+}
+
+.overview-section__compass {
     background-color: #3d3d3d;
     border-radius: 50%;
     position: relative;
