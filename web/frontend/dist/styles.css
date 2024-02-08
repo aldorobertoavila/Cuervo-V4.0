@@ -1,7 +1,86 @@
-body {
-    background: #ECEFF1;
-    color: rgba(0, 0, 0, 0.87);
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+/* Page Styles */
+.page {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background: #eceff1;
+    color: #000;
 }
+
+/* Header Styles */
+.page-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.page-header__title {
+    margin: 0;
+}
+
+/* Main Content Styles */
+.page-content {
+    padding: 20px;
+}
+
+/* Overview Section Styles */
+.overview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Overview Card Styles */
+.overview__card {
+    flex: 0 0 auto;
+    /* Disable flex-grow and flex-shrink to maintain fixed width */
+    width: 200px;
+    /* Set a fixed width for each card */
+    margin-right: 10px;
+    /* Add spacing between cards */
+    flex: 1 1 calc(50% - 20px);
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    flex: 1 1 auto;
+    margin: 10px;
+    max-width: calc(33.33% - 20px); /* Maximum width for each card */
+    width: 100%; /* Make sure the cards fill the available space */
+}
+
+/* Card Title Styles */
+.overview__title {
+    margin-top: 0;
+}
+
+/* Card Icon Styles */
+.overview__icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Footer Styles */
+.page-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+  /* Media Query for Phones */
+@media screen and (max-width: 750px) {
+    .overview__card {
+      max-width: calc(50% - 20px); /* 2 cards per row on phones */
+    }
+  }
+  
+  /* Media Query for Desktops */
+  @media screen and (min-width: 750px) {
+    .overview__card {
+      max-width: calc(25% - 20px); /* 4 cards per row on desktops */
+    }
+  }
