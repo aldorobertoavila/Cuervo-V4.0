@@ -33,13 +33,6 @@
     margin-right: 10px;
 }
 
-.page-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
 @media screen and (max-width: 750px) {
     .overview-section__card {
         max-width: calc(50% - 20px);
@@ -49,90 +42,5 @@
 @media screen and (min-width: 750px) {
     .overview-section__card {
         max-width: calc(25% - 20px);
-    }
-}
-
-.overview-section__compass {
-    background-color: #3d3d3d;
-    border-radius: 50%;
-    position: relative;
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 8px solid #c5c5c5;
-    width: 200px;
-    height: 200px;
-}
-
-.overview-section__compass-direction {
-    font-size: 24px;
-    font-family: Arial, sans-serif;
-    user-select: none;
-    color: #FFF;
-    position: absolute;
-    text-align: center;
-}
-
-.overview-section__compass-direction--north {
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.overview-section__compass-direction--south {
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.overview-section__compass-direction--east {
-    right: 8px;
-}
-
-.overview-section__compass-direction--west {
-    left: 8px;
-}
-
-.overview-section__compass-arrow-part--up {
-    border-left: 7.5px solid transparent;
-    border-right: 7.5px solid transparent;
-    border-bottom: 95px solid #ef5052;
-    position: relative;
-}
-
-.overview-section__compass-arrow-part--down {
-    transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    border-left: 7.5px solid transparent;
-    border-right: 7.5px solid transparent;
-    border-bottom: 95px solid #f3f3f3;
-    position: relative;
-}
-
-@media (max-width: 750px) {
-    .overview-section__compass {
-        border: 8px solid #c5c5c5;
-        width: 200px;
-        height: 200px;
-    }
-
-    .overview-section__compass-arrow-part--up {
-        border-bottom: 95px solid #EF5052;
-        border-left: 7.5px solid transparent;
-        border-right: 7.5px solid transparent;
-    }
-
-    .overview-section__compass-arrow-part--down {
-        border-bottom: 95px solid #F3F3F3;
-        border-left: 7.5px solid transparent;
-        border-right: 7.5px solid transparent;
-    }
-
-    .overview-section__compass-direction {
-        font-size: 24px;
     }
 }
