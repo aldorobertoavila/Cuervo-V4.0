@@ -30,6 +30,7 @@
   <link rel="stylesheet" type="text/css" href="styles/overview-section.css">
 
   <link rel="stylesheet" type="text/css" href="styles/components/compass.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/thermometer.css">
 </head>
 
 <body class="page">
@@ -40,32 +41,36 @@
     <section class="overview-section">
       <article class="overview-section__card overview-section__card--speed">
         <h2 class="overview-section__title">Velocidad</h2>
-        <div class="speedometer overview-section__icon"></div>
       </article>
       <article class="overview-section__card overview-section__card--temperature">
         <h2 class="overview-section__title">Temperatura</h2>
-        <div class="thermometer overview-section__icon"></div>
+        <figure class="overview-section__thermometer">
+          <div class="thermometer">
+            <div class="thermometer__column" style="height:0" data-value="0°C"></div>
+            <div class="thermometer__graduations"></div>
+          </div>
+        </figure>
       </article>
       <article class="overview-section__card overview-section__card--orientation">
         <h2 class="overview-section__title">Orientación</h2>
-        <div class="compass">
-          <div class="compass-direction compass-direction--north">N</div>
-          <div class="compass-direction compass-direction--east">E</div>
-          <div class="compass-direction compass-direction--west">W</div>
-          <div class="compass-direction compass-direction--south">S</div>
-          <div class="compass-arrow">
-            <div class="compass-arrow-part compass-arrow-part--up"></div>
-            <div class="compass-arrow-part compass-arrow-part--down"></div>
+        <figure class="overview-section__compass">
+          <div class="compass">
+            <div class="compass-direction compass-direction--north">N</div>
+            <div class="compass-direction compass-direction--east">E</div>
+            <div class="compass-direction compass-direction--west">W</div>
+            <div class="compass-direction compass-direction--south">S</div>
+            <div class="compass-arrow">
+              <div class="compass-arrow-part compass-arrow-part--up"></div>
+              <div class="compass-arrow-part compass-arrow-part--down"></div>
+            </div>
           </div>
-        </div>
+        </figure>
       </article>
       <article class="overview-section__card overview-section__card--battery">
         <h2 class="overview-section__title">Batería</h2>
-        <div class="battery overview-section__icon"></div>
       </article>
       <article class="overview-section__card overview-section__card--pv">
         <h2 class="overview-section__title">PV</h2>
-        <div class="pv overview-section__icon"></div>
       </article>
     </section>
   </main>
@@ -74,6 +79,7 @@
   </footer>
 
   <script src="scripts/compass.js"></script>
+  <script src="scripts/thermometer.js"></script>
 </body>
 
 </html>

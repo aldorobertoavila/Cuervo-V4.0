@@ -25,12 +25,18 @@
     margin-top: 0;
 }
 
-.overview-section__icon {
-    width: 50px;
-    height: 50px;
-    background-color: #ddd;
-    border-radius: 50%;
-    margin-right: 10px;
+.overview-section__compass {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overview-section__termometer {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width: 750px) {
