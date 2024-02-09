@@ -4,7 +4,7 @@ const UNITS = {
 };
 
 let temperatureConfig = {
-	min: 20,
+	min: -20,
 	max: 80,
 	unit: "Celcius"
 };
