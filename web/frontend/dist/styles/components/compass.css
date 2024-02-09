@@ -44,6 +44,10 @@
     left: 8px;
 }
 
+.compass-arrow {
+    transition: 0.5s;
+}
+
 .compass-arrow-part--up {
     border-left: 7.5px solid transparent;
     border-right: 7.5px solid transparent;

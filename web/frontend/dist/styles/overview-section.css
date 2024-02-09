@@ -25,14 +25,7 @@
     margin-top: 0;
 }
 
-.overview-section__compass {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.overview-section__termometer {
+.overview-section__figure {
     margin: auto;
     display: flex;
     flex-direction: column;
