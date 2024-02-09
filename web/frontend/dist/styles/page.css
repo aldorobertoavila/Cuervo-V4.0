@@ -1,21 +1,29 @@
 @charset "utf-8";
 
 .page {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #eceff1;
+    background: #dedede;
     color: #000;
 }
 
 .page-header {
-    background-color: #333;
-    color: #fff;
+    background-color: #ffffff;
+    color: #020202;
     padding: 20px;
+    box-shadow: 0 5px 5px 2.5px rgba(140, 140, 140, 0.5);
 }
 
 .page-header__title {
+    font-family: 'Arial', sans-serif;
+    font-size: 48px;
     margin: 0;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    line-height: initial;
+    text-align: center;
 }
 
 .page-content {
@@ -23,8 +31,19 @@
 }
 
 .page-footer {
-    background-color: #333;
-    color: #fff;
+    color: #ffffff;
     padding: 20px;
     text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+    .page-header__title {
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .page-header__title {
+        font-size: 48px;
+    }
 }

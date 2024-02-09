@@ -7,39 +7,17 @@
 }
 
 .overview-section__card {
-    flex: 0 0 auto;
-    width: 200px;
-    margin-right: 10px;
-    flex: 1 1 calc(50% - 20px);
     margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    flex: 1 1 auto;
-    margin: 10px;
-    max-width: calc(33.33% - 20px);
-    width: 100%;
-}
-
-.overview-section__title {
-    margin-top: 0;
-}
-
-.overview-section__figure {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 @media screen and (max-width: 750px) {
     .overview-section__card {
-        max-width: calc(50% - 20px);
+        width: 40%;
     }
 }
 
 @media screen and (min-width: 750px) {
     .overview-section__card {
-        max-width: calc(25% - 20px);
+        width: 200px;
     }
 }

@@ -30,6 +30,7 @@
   <link rel="stylesheet" type="text/css" href="styles/overview-section.css">
 
   <link rel="stylesheet" type="text/css" href="styles/components/battery.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/card.css">
   <link rel="stylesheet" type="text/css" href="styles/components/compass.css">
   <link rel="stylesheet" type="text/css" href="styles/components/thermometer.css">
 </head>
@@ -40,7 +41,7 @@
   </header>
   <main class="page-content">
     <section class="overview-section">
-      <article class="overview-section__card overview-section__card--speed">
+      <!-- <article class="overview-section__card overview-section__card--speed">
         <h2 class="overview-section__title">Velocidad</h2>
       </article>
       <article class="overview-section__card overview-section__card--temperature">
@@ -66,18 +67,36 @@
             </div>
           </div>
         </figure>
-      </article>
+      </article> -->
       <article class="overview-section__card overview-section__card--battery">
-        <h2 class="overview-section__title">Batería</h2>
+        <div class="card">
+          <header class="card__header">
+            <h2 class="card__title">Batería</h2>
+          </header>
+          <div class="card__body">
+            <figure class="card__figure">
+              <div class="battery">
+                <div class="battery__level" style="height:100%;"></div>
+              </div>
+            </figure>
+            <div class="card__number">
+              <p class="card__number--unit"><span class="card__number--value">0</span>%</p>
+            </div>
+          </div>
+          <footer class="card__footer">
+            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
+          </footer>
+        </div>
+      </article>
+      <!-- <article class="overview-section__card overview-section__card--pv">
+        <h2 class="overview-section__title">PV</h2>
         <figure class="overview-section__figure">
           <div class="battery">
             <div class="battery__level" style="height:100%;"></div>
           </div>
         </figure>
-      </article>
-      <article class="overview-section__card overview-section__card--pv">
-        <h2 class="overview-section__title">PV</h2>
-      </article>
+        <p class="overview-section__title"><span>0</span>A</p>
+      </article> -->
     </section>
   </main>
   <footer class="page-footer">
