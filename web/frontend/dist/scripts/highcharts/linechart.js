@@ -32,7 +32,7 @@ function generateInitialData() {
     const series = { averageSeries: [], rangeSeries: [] };
     const time = new Date().getTime();
 
-    for (let i = -3600; i <= 0; i += 1) {
+    for (let i = -3600; i < 0; i += 1) {
         const [averageTemperature, minTemperature, maxTemperature] = generateTemperatures();
         const currentTime = time + i * 1000;
 
@@ -45,23 +45,7 @@ function generateInitialData() {
 
 const initialData = generateInitialData();
 
-Highcharts.stockChart('container', {
-    chart: {
-        events: {
-            load: function () {
-                const averageTemperatureSeries = this.series[0];
-                const temperatureRangeSeries = this.series[1];
-
-                setInterval(function () {
-                    const [averageTemperature, minTemperature, maxTemperature] = generateTemperatures();
-                    const time = new Date().getTime();
-
-                    temperatureRangeSeries.addPoint([time, minTemperature, maxTemperature], true, true);
-                    averageTemperatureSeries.addPoint([time, averageTemperature], true, true);
-                }, 1000);
-            }
-        },
-    },
+const chart = Highcharts.stockChart('container', {
     title: {
         text: 'Live random data'
     },
@@ -76,7 +60,12 @@ Highcharts.stockChart('container', {
     },
     plotOptions: {
         series: {
+            findNearestPointBy: 'xy',
             stickyTracking: false,
+            cropThreshold: 1,
+			dataGrouping: {
+				enabled: false
+			}
         }
     },
     tooltip: {
@@ -141,7 +130,7 @@ Highcharts.stockChart('container', {
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[0]
             },
-            data: initialData.averageSeries,
+            data: initialData.averageSeries
         },
         {
             name: 'Temperature Range',
@@ -153,7 +142,15 @@ Highcharts.stockChart('container', {
             marker: {
                 enabled: false
             },
-            data: initialData.rangeSeries,
+            data: initialData.rangeSeries
         }
     ]
 });
+
+setInterval(function () {
+    const [averageTemperature, minTemperature, maxTemperature] = generateTemperatures();
+    const time = new Date().getTime();
+
+    chart.series[1].addPoint([time, minTemperature, maxTemperature], true, true);
+    chart.series[0].addPoint([time, averageTemperature], true, true);
+}, 1000);
