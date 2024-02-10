@@ -8,6 +8,7 @@
   <title>Cuervo V4.0</title>
 
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
   <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -29,6 +30,7 @@
   <link rel="stylesheet" type="text/css" href="styles/page.css">
   <link rel="stylesheet" type="text/css" href="styles/overview-section.css">
 
+  <link rel="stylesheet" type="text/css" href="styles/components/highcharts/linechart.css">
   <link rel="stylesheet" type="text/css" href="styles/components/battery.css">
   <link rel="stylesheet" type="text/css" href="styles/components/card.css">
   <link rel="stylesheet" type="text/css" href="styles/components/compass.css">
@@ -146,14 +148,28 @@
         </div>
       </article>
     </section>
+
+    <section>
+      <article>
+        <figure class="highcharts-figure">
+          <div id="container"></div>
+          <p class="highcharts-description">
+            Chart demonstrating using an arearange series in combination with a line
+            series. In this case, the arearange series is used to visualize the
+            temperature range per day, while the line series shows the average
+            temperature.
+          </p>
+        </figure>
+      </article>
+    </section>
   </main>
   <footer class="page-footer">
 
   </footer>
 
   <script src="scripts/battery.js"></script>
-  <script src="scripts/compass.js"></script>
-  <script src="scripts/thermometer.js"></script>
+  <!-- <script src="scripts/compass.js"></script> -->
+  <!-- <script src="scripts/thermometer.js"></script> -->
 
   <script src="scripts/highcharts/linechart.js"></script>
 </body>
