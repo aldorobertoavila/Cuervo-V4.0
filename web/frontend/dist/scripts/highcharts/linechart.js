@@ -229,4 +229,9 @@ setInterval(function () {
 
     chart.series[1].addPoint([time, minTemperature, maxTemperature], redraw, true);
     chart.series[0].addPoint([time, averageTemperature], redraw, true);
+
+    if (redraw) {
+        chart.update({ animation: { duration: 500 } }, false);
+    }
+
 }, 1000);
