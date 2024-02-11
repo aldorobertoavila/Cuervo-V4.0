@@ -1,11 +1,5 @@
 @charset "utf-8";
 
-.overview-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .overview-section__card {
     margin: 10px;
 }

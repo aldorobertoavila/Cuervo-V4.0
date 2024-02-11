@@ -42,7 +42,7 @@
     <h1 class="page-header__title">Cuervo V4.0</h1>
   </header>
   <main class="page-content">
-    <section class="overview-section">
+    <section class="page-section page-section--overview">
       <article class="overview-section__card overview-section__card--speed">
         <div class="card">
           <header class="card__header">
@@ -148,18 +148,22 @@
         </div>
       </article>
     </section>
-
-    <section>
+    <section class="page-section page-section--main">
       <article>
+        <h2>Sistema fotovoltaico</h2>
+
         <figure class="highcharts-figure">
-          <div id="container"></div>
-          <p class="highcharts-description">
-            Chart demonstrating using an arearange series in combination with a line
-            series. In this case, the arearange series is used to visualize the
-            temperature range per day, while the line series shows the average
-            temperature.
-          </p>
+          <div class="line-chart line-chart--pv-current"></div>
         </figure>
+
+        <figure class="highcharts-figure">
+          <div class="line-chart line-chart--pv-voltage"></div>
+        </figure>
+
+        <figure class="highcharts-figure">
+          <div class="line-chart line-chart--pv-power"></div>
+        </figure>
+
       </article>
     </section>
   </main>
