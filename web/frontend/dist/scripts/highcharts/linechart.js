@@ -67,7 +67,20 @@ const chart = Highcharts.stockChart({
         useUTC: false
     },
     exporting: {
-        enabled: false
+        buttons: {
+            contextButton: {
+                menuItems: [
+                    'viewFullscreen',
+                    'separator',
+                    'downloadPNG',
+                    'downloadJPEG',
+                    'downloadPDF',
+                    'downloadSVG',
+                    'separator',
+                    'downloadCSV'
+                ]
+            }
+        }
     },
     yAxis: {
         opposite: false,
@@ -76,50 +89,8 @@ const chart = Highcharts.stockChart({
     xAxis: {
         type: 'datetime',
         labels: {
-            rotation: -45,
             style: {
                 fontSize: '10px',
-                textAlign: 'center',
-                verticalAlign: 'middle'
-            }
-        },
-        dateTimeLabelFormats: {
-            second: '%H:%M:%S',
-            minute: '%H:%M:%S',
-            hour: '%H:%M',
-            day: '%Y-%m-%d',
-            week: '%Y-%m-%d',
-            month: '%Y-%m',
-            year: '%Y'
-        },
-        tickInterval: 1000,
-        events: {
-            afterSetExtremes: function () {
-                const extremes = this.getExtremes();
-                const interval = extremes.max - extremes.min;
-
-                const secondInterval = 1000;
-                const minuteInterval = 60 * secondInterval;
-                const hourInterval = 60 * minuteInterval;
-
-                let tickInterval = secondInterval;
-
-                if (interval <= secondInterval) {
-                    tickInterval = secondInterval;
-                } else if (interval <= minuteInterval) {
-                    tickInterval = 5 * secondInterval;
-                } else if (interval <= 5 * minuteInterval) {
-                    tickInterval = minuteInterval;
-                } else if (interval <= 15 * minuteInterval) {
-                    tickInterval = minuteInterval;
-                } else if (interval <= hourInterval) {
-                    tickInterval = 5 * minuteInterval;
-                }
-
-                const min = Math.floor(extremes.min / tickInterval) * tickInterval;
-                const max = Math.ceil(extremes.max / tickInterval) * tickInterval;
-
-                this.update({ tickInterval, min, max }, true, false);
             }
         }
     },
@@ -227,11 +198,10 @@ setInterval(function () {
     const duration = extremes.max - extremes.min;
     const redraw = duration <= 15 * 60 * 1000;
 
-    chart.series[1].addPoint([time, minTemperature, maxTemperature], false, true);
-    chart.series[0].addPoint([time, averageTemperature], false, true);
+    chart.series[1].addPoint([time, minTemperature, maxTemperature], false, false);
+    chart.series[0].addPoint([time, averageTemperature], false, false);
 
     if (redraw) {
-        chart.update({ animation: { duration: 500 } }, false);
+        chart.redraw();
     }
-
 }, 1000);
