@@ -19,11 +19,11 @@ function generateTemperature(min, max, mean, stdDev) {
 }
 
 function generateTemperatures() {
-    const temperatures = Array.from({ length: 4 }, () => generateTemperature(20, 40, 30, 2));
+    const rawTemperatures = Array.from({ length: 4 }, () => generateTemperature(20, 40, 30, 2));
 
-    const minTemperature = Math.min(...temperatures);
-    const maxTemperature = Math.max(...temperatures);
-    const averageTemperature = calculateAverage(temperatures);
+    const minTemperature = Math.min(...rawTemperatures);
+    const maxTemperature = Math.max(...rawTemperatures);
+    const averageTemperature = calculateAverage(rawTemperatures);
 
     return [averageTemperature, minTemperature, maxTemperature]
 }
@@ -45,7 +45,18 @@ function generateInitialData() {
 
 const initialData = generateInitialData();
 
-const chart = Highcharts.stockChart('container', {
+const chartElement = document.querySelector('.line-chart--pv-current');
+
+const chart = Highcharts.stockChart({
+    chart: {
+        renderTo: chartElement,
+        zooming: {
+            mouseWheel: {
+                enabled: false,
+            }
+        },
+        alignTicks: false
+    },
     title: {
         text: 'Live random data'
     },
@@ -58,14 +69,73 @@ const chart = Highcharts.stockChart('container', {
     exporting: {
         enabled: false
     },
+    yAxis: {
+        opposite: false,
+        axisPosition: 'left'
+    },
+    xAxis: {
+        type: 'datetime',
+        labels: {
+            rotation: -45,
+            style: {
+                fontSize: '10px',
+                textAlign: 'center',
+                verticalAlign: 'middle'
+            }
+        },
+        dateTimeLabelFormats: {
+            second: '%H:%M:%S',
+            minute: '%H:%M:%S',
+            hour: '%H:%M',
+            day: '%Y-%m-%d',
+            week: '%Y-%m-%d',
+            month: '%Y-%m',
+            year: '%Y'
+        },
+        tickInterval: 1000,
+        events: {
+            afterSetExtremes: function () {
+                const extremes = this.getExtremes();
+                const interval = extremes.max - extremes.min;
+
+                const secondInterval = 1000;
+                const minuteInterval = 60 * secondInterval;
+                const hourInterval = 60 * minuteInterval;
+
+                let tickInterval = secondInterval;
+
+                if (interval <= secondInterval) {
+                    tickInterval = secondInterval;
+                } else if (interval <= minuteInterval) {
+                    tickInterval = 5 * secondInterval;
+                } else if (interval <= 5 * minuteInterval) {
+                    tickInterval = minuteInterval;
+                } else if (interval <= 15 * minuteInterval) {
+                    tickInterval = minuteInterval;
+                } else if (interval <= hourInterval) {
+                    tickInterval = 5 * minuteInterval;
+                }
+
+                const min = Math.floor(extremes.min / tickInterval) * tickInterval;
+                const max = Math.ceil(extremes.max / tickInterval) * tickInterval;
+
+                this.update({ tickInterval, min, max }, true, false);
+            }
+        }
+    },
     plotOptions: {
         series: {
             findNearestPointBy: 'xy',
             stickyTracking: false,
             cropThreshold: 1,
-			dataGrouping: {
-				enabled: false
-			}
+            dataGrouping: {
+                enabled: true,
+                units: [
+                    ['minute', [1, 5, 10, 15, 30, 45]],
+                    ['hour', [1, 6, 12]],
+                    ['day', [1]]
+                ]
+            }
         }
     },
     tooltip: {
@@ -79,9 +149,9 @@ const chart = Highcharts.stockChart('container', {
 
             this.points.forEach((point) => {
                 if (point.series.type === 'line') {
-                    tooltipContent += `<span style="color: ${point.color}">\u25CF</span> ${point.series.name}: <b>${point.y}${this.series.tooltipOptions.valueSuffix}</b><br>`;
+                    tooltipContent += `<span style="color: ${point.color}">\u25CF</span> ${point.series.name}: <b>${point.y.toFixed(2)}${this.series.tooltipOptions.valueSuffix}</b><br>`; // Limiting to 2 decimals
                 } else if (point.series.type === 'arearange') {
-                    tooltipContent += `<span style="color: ${point.color}">\u25CF</span> ${point.series.name}: <b>${point.point.low}${this.series.tooltipOptions.valueSuffix}</b> - <b>${point.point.high}${this.series.tooltipOptions.valueSuffix}</b><br>`;
+                    tooltipContent += `<span style="color: ${point.color}">\u25CF</span> ${point.series.name}: <b>${point.point.low.toFixed(2)}${this.series.tooltipOptions.valueSuffix}</b> - <b>${point.point.high.toFixed(2)}${this.series.tooltipOptions.valueSuffix}</b><br>`; // Limiting to 2 decimals
                 }
             });
 
@@ -140,7 +210,9 @@ const chart = Highcharts.stockChart('container', {
             fillOpacity: 0.3,
             zIndex: 0,
             marker: {
-                enabled: false
+                fillColor: 'white',
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[0]
             },
             data: initialData.rangeSeries
         }
@@ -151,6 +223,10 @@ setInterval(function () {
     const [averageTemperature, minTemperature, maxTemperature] = generateTemperatures();
     const time = new Date().getTime();
 
-    chart.series[1].addPoint([time, minTemperature, maxTemperature], true, true);
-    chart.series[0].addPoint([time, averageTemperature], true, true);
+    const extremes = chart.xAxis[0].getExtremes();
+    const duration = extremes.max - extremes.min;
+    const redraw = duration <= 15 * 60 * 1000;
+
+    chart.series[1].addPoint([time, minTemperature, maxTemperature], redraw, true);
+    chart.series[0].addPoint([time, averageTemperature], redraw, true);
 }, 1000);
