@@ -227,8 +227,8 @@ setInterval(function () {
     const duration = extremes.max - extremes.min;
     const redraw = duration <= 15 * 60 * 1000;
 
-    chart.series[1].addPoint([time, minTemperature, maxTemperature], redraw, true);
-    chart.series[0].addPoint([time, averageTemperature], redraw, true);
+    chart.series[1].addPoint([time, minTemperature, maxTemperature], false, true);
+    chart.series[0].addPoint([time, averageTemperature], false, true);
 
     if (redraw) {
         chart.update({ animation: { duration: 500 } }, false);
