@@ -204,4 +204,4 @@ setInterval(function () {
     if (redraw) {
         chart.redraw();
     }
-}, 1000);
+}, 1100);
