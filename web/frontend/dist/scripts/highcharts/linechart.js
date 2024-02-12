@@ -64,6 +64,9 @@ function createDefaultLineChartSettings(chartElement) {
                 }
             }
         },
+        legend: {
+            enabled: true
+        },
         yAxis: [],
         xAxis: {
             type: 'datetime',
@@ -76,7 +79,7 @@ function createDefaultLineChartSettings(chartElement) {
         plotOptions: {
             series: {
                 findNearestPointBy: 'xy',
-                stickyTracking: false,
+                stickyTracking: true,
                 cropThreshold: 1,
                 dataGrouping: {
                     enabled: true,
@@ -146,7 +149,16 @@ function createDefaultLineChartSettings(chartElement) {
     };
 }
 
-function createMultiLineChart(chartElement, initialData) {
+function createDefaultMarkerSettings() {
+    return {
+        symbol: 'circle',
+        fillColor: 'white',
+        lineWidth: 2,
+        lineColor: null
+    }
+}
+
+function createBatteryChargingLineChart(chartElement, initialData) {
     const defaultSettings = createDefaultLineChartSettings(chartElement);
 
     const settings = Object.assign({}, defaultSettings, {
@@ -193,36 +205,21 @@ function createMultiLineChart(chartElement, initialData) {
         series: [
             {
                 name: 'Voltage',
-                marker: {
-                    symbol: 'circle',
-                    fillColor: 'white',
-                    lineWidth: 2,
-                    lineColor: null
-                },
+                marker: createDefaultMarkerSettings(),
                 data: initialData.averageSeries,
                 yAxis: 0,
                 valueSuffix: "V"
             },
             {
                 name: 'Current',
-                marker: {
-                    symbol: 'circle',
-                    fillColor: 'white',
-                    lineWidth: 2,
-                    lineColor: null
-                },
+                marker: createDefaultMarkerSettings(),
                 data: initialData.averageSeries,
                 yAxis: 1,
                 valueSuffix: "A"
             },
             {
                 name: 'Power',
-                marker: {
-                    symbol: 'circle',
-                    fillColor: 'white',
-                    lineWidth: 2,
-                    lineColor: null
-                },
+                marker: createDefaultMarkerSettings(),
                 data: initialData.averageSeries,
                 yAxis: 2,
                 valueSuffix: "W"
@@ -233,24 +230,44 @@ function createMultiLineChart(chartElement, initialData) {
     return Highcharts.stockChart(settings);
 }
 
-function createLineChart(chartElement, initialData) {
+function createBatteryTemperatureLineChart(chartElement, initialData) {
     const defaultSettings = createDefaultLineChartSettings(chartElement);
 
     const settings = Object.assign({}, defaultSettings, {
-        yAxis: {
-            opposite: false,
-            axisPosition: 'left'
-        },
+        yAxis: [
+            {
+                title: {
+                    text: 'Temperature'
+                },
+                labels: {
+                    format: '{value}°C'
+                },
+                opposite: false,
+                axisPosition: 'left',
+                height: '50%',
+                top: '50%',
+                offset: 0
+            },
+            {
+                title: {
+                    text: 'Temperature'
+                },
+                labels: {
+                    format: '{value}°C'
+                },
+                opposite: false,
+                axisPosition: 'left',
+                height: '50%',
+                offset: 0
+            }
+        ],
         series: [
             {
                 name: 'Average Temperature',
                 zIndex: 1,
-                marker: {
-                    fillColor: 'white',
-                    lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[0]
-                },
+                marker: createDefaultMarkerSettings(),
                 data: initialData.averageSeries,
+                yAxis: 1,
                 valueSuffix: "°C"
             },
             {
@@ -260,13 +277,92 @@ function createLineChart(chartElement, initialData) {
                 color: Highcharts.getOptions().colors[0],
                 fillOpacity: 0.3,
                 zIndex: 0,
-                marker: {
-                    fillColor: 'white',
-                    lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[0]
-                },
+                marker: createDefaultMarkerSettings(),
                 data: initialData.rangeSeries,
+                yAxis: 1,
                 valueSuffix: "°C"
+            },
+            {
+                name: 'Temperature Battery 1',
+                marker: createDefaultMarkerSettings(),
+                data: [],
+                yAxis: 0,
+                valueSuffix: "°C"
+            },
+            {
+                name: 'Temperature Battery 2',
+                marker: createDefaultMarkerSettings(),
+                data: [],
+                yAxis: 0,
+                valueSuffix: "°C"
+            },
+            {
+                name: 'Temperature Battery 3',
+                marker: createDefaultMarkerSettings(),
+                data: [],
+                yAxis: 0,
+                valueSuffix: "°C"
+            },
+            {
+                name: 'Temperature Battery 4',
+                marker: createDefaultMarkerSettings(),
+                data: [],
+                yAxis: 0,
+                valueSuffix: "°C"
+            }
+        ]
+    });
+
+    return Highcharts.stockChart(settings);
+}
+
+function createMotorLineChart(chartElement, initialData) {
+    const defaultSettings = createDefaultLineChartSettings(chartElement);
+
+    const settings = Object.assign({}, defaultSettings, {
+        yAxis: [
+            {
+                title: {
+                    text: 'Speed'
+                },
+                labels: {
+                    format: '{value}km/h'
+                },
+                opposite: false,
+                axisPosition: 'left',
+                height: '50%',
+                offset: 0
+            },
+            {
+                title: {
+                    text: 'Temperature'
+                },
+                labels: {
+                    format: '{value}°C'
+                },
+                opposite: false,
+                axisPosition: 'left',
+                height: '50%',
+                top: '50%',
+                offset: 0
+            }
+        ],
+        series: [
+            {
+                name: 'Temperature',
+                zIndex: 1,
+                marker: createDefaultMarkerSettings(),
+                data: initialData.averageSeries,
+                yAxis: 1,
+                valueSuffix: "°C"
+            },
+            {
+                name: 'Speed',
+                zIndex: 1,
+                marker: createDefaultMarkerSettings(),
+                data: initialData.averageSeries,
+                yAxis: 0,
+                valueSuffix: "km/h"
             }
         ]
     });
@@ -316,37 +412,69 @@ function generateInitialData() {
 
 const initialData = generateInitialData();
 
-const batteryLineChartElement = document.querySelector('.chart-block__line-chart--battery');
+const batteryChargingLineChartElement = document.querySelector('.chart-block__line-chart--battery-charging');
+const batteryTemperatureLineChartElement = document.querySelector('.chart-block__line-chart--battery-temperature');
+
 const motorLineChartElement = document.querySelector('.chart-block__line-chart--motor');
 const pvLineChartElement = document.querySelector('.chart-block__line-chart--pv');
 
-const batteryLineChart = createMultiLineChart(batteryLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
-const motorLineChart = createLineChart(motorLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
-const pvLineChart = createLineChart(pvLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
+const batteryChargingLineChart = createBatteryChargingLineChart(batteryChargingLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
+const batteryTemperatureLineChart = createBatteryTemperatureLineChart(batteryTemperatureLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
 
-setInterval(function () {
+const pvLineChart = createBatteryChargingLineChart(pvLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
+const motorLineChart = createMotorLineChart(motorLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
+
+setInterval(() => {
+    const updateSeries = (chart, seriesIndex, time, ...data) => {
+        chart.series[seriesIndex].addPoint([time, ...data], false, false);
+    };
+
+    const shouldRedrawChart = (chart, intervalDuration) => {
+        const extremes = chart.xAxis[0].getExtremes();
+        const duration = extremes.max - extremes.min;
+
+        return duration <= intervalDuration;
+    };
+
+    const MAX_INTERVAL_DURATION = 15 * 60 * 1000;
+
     const time = new Date().getTime();
 
     const [rawTemperatures, averageTemperature, minTemperature, maxTemperature] = generateTemperatures();
+    const [batteryTemperature1, batteryTemperature2, batteryTemperature3, batteryTemperature4] = rawTemperatures;
 
-    const extremes = batteryLineChart.xAxis[0].getExtremes();
-    const duration = extremes.max - extremes.min;
-    const redraw = duration <= 15 * 60 * 1000;
+    updateSeries(batteryChargingLineChart, 0, time, averageTemperature);
+    updateSeries(batteryChargingLineChart, 1, time, averageTemperature);
+    updateSeries(batteryChargingLineChart, 2, time, averageTemperature);
 
-    batteryLineChart.series[0].addPoint([time, averageTemperature], false, false);
-    batteryLineChart.series[1].addPoint([time, averageTemperature], false, false);
-    batteryLineChart.series[2].addPoint([time, averageTemperature], false, false);
+    updateSeries(batteryTemperatureLineChart, 0, time, averageTemperature);
+    updateSeries(batteryTemperatureLineChart, 1, time, minTemperature, maxTemperature);
+    updateSeries(batteryTemperatureLineChart, 2, time, batteryTemperature1);
+    updateSeries(batteryTemperatureLineChart, 3, time, batteryTemperature2);
+    updateSeries(batteryTemperatureLineChart, 4, time, batteryTemperature3);
+    updateSeries(batteryTemperatureLineChart, 5, time, batteryTemperature4);
 
-    motorLineChart.series[0].addPoint([time, averageTemperature], false, false);
-    motorLineChart.series[1].addPoint([time, minTemperature, maxTemperature], false, false);
+    updateSeries(pvLineChart, 0, time, averageTemperature);
+    updateSeries(pvLineChart, 1, time, averageTemperature);
+    updateSeries(pvLineChart, 2, time, averageTemperature);
 
-    pvLineChart.series[0].addPoint([time, averageTemperature], false, false);
-    pvLineChart.series[1].addPoint([time, minTemperature, maxTemperature], false, false);
+    updateSeries(motorLineChart, 0, time, averageTemperature);
+    updateSeries(motorLineChart, 1, time, averageTemperature);
 
-    if (redraw) {
-        batteryLineChart.redraw();
-        motorLineChart.redraw();
+    if (shouldRedrawChart(batteryChargingLineChart, MAX_INTERVAL_DURATION)) {
+        batteryChargingLineChart.redraw();
+    }
+
+    if (shouldRedrawChart(pvLineChart, MAX_INTERVAL_DURATION)) {
+        batteryTemperatureLineChart.redraw();
+    }
+
+    if (shouldRedrawChart(pvLineChart, MAX_INTERVAL_DURATION)) {
         pvLineChart.redraw();
+    }
+
+    if (shouldRedrawChart(motorLineChart, MAX_INTERVAL_DURATION)) {
+        motorLineChart.redraw();
     }
 
 }, 1100);
