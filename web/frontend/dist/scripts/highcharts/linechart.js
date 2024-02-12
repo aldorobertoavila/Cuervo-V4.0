@@ -465,7 +465,7 @@ setInterval(() => {
         batteryChargingLineChart.redraw();
     }
 
-    if (shouldRedrawChart(pvLineChart, MAX_INTERVAL_DURATION)) {
+    if (shouldRedrawChart(batteryTemperatureLineChart, MAX_INTERVAL_DURATION)) {
         batteryTemperatureLineChart.redraw();
     }
 
