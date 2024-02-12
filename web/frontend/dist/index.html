@@ -63,7 +63,6 @@
           </footer>
         </div>
       </article>
-
       <article class="overview-section__card overview-section__card--temperature">
         <div class="card">
           <header class="card__header">
@@ -149,21 +148,38 @@
       </article>
     </section>
     <section class="page-section page-section--main">
-      <article>
-        <h2>Sistema fotovoltaico</h2>
-
-        <figure class="highcharts-figure">
-          <div class="line-chart line-chart--pv-current"></div>
-        </figure>
-
-        <figure class="highcharts-figure">
-          <div class="line-chart line-chart--pv-voltage"></div>
-        </figure>
-
-        <figure class="highcharts-figure">
-          <div class="line-chart line-chart--pv-power"></div>
-        </figure>
-
+      <article class="content-section">
+        <header class="content-section__header">
+          <h2 class="content-section__title">Banco de baterías</h2>
+        </header>
+        <div class="content-section__body">
+          <figure class="chart-block">
+            <div class="chart-block__line-chart--battery"></div>
+            <figcaption class="chart-block__description"></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="content-section">
+        <header class="content-section__header">
+          <h2 class="content-section__title">Sistema fotovoltaico</h2>
+        </header>
+        <div class="content-section__body">
+          <figure class="chart-block">
+            <div class="chart-block__line-chart--pv"></div>
+            <figcaption class="chart-block__description"></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="content-section">
+        <header class="content-section__header">
+          <h2 class="content-section__title">Sistema de transmisión</h2>
+        </header>
+        <div class="content-section__body">
+          <figure class="chart-block">
+            <div class="chart-block__line-chart--motor"></div>
+            <figcaption class="chart-block__description"></figcaption>
+          </figure>
+        </div>
       </article>
     </section>
   </main>
@@ -171,7 +187,7 @@
 
   </footer>
 
-  <script src="scripts/battery.js"></script>
+  <!-- <script src="scripts/battery.js"></script> -->
   <!-- <script src="scripts/compass.js"></script> -->
   <!-- <script src="scripts/thermometer.js"></script> -->
 
