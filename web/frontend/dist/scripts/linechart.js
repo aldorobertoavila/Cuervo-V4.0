@@ -412,15 +412,17 @@ function generateInitialData() {
 
 const initialData = generateInitialData();
 
+const batteryContentSectionElement = document.querySelector('.collapsible-content-section__body--battery');
+const pvContentSectionElement = document.querySelector('.collapsible-content-section__body--pv');
+const motorContentSectionElement = document.querySelector('.collapsible-content-section__body--motor');
+
 const batteryChargingLineChartElement = document.querySelector('.chart-block__line-chart--battery-charging');
 const batteryTemperatureLineChartElement = document.querySelector('.chart-block__line-chart--battery-temperature');
-
 const motorLineChartElement = document.querySelector('.chart-block__line-chart--motor');
 const pvLineChartElement = document.querySelector('.chart-block__line-chart--pv');
 
 const batteryChargingLineChart = createBatteryChargingLineChart(batteryChargingLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
 const batteryTemperatureLineChart = createBatteryTemperatureLineChart(batteryTemperatureLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
-
 const pvLineChart = createBatteryChargingLineChart(pvLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
 const motorLineChart = createMotorLineChart(motorLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
 
@@ -429,11 +431,11 @@ setInterval(() => {
         chart.series[seriesIndex].addPoint([time, ...data], false, false);
     };
 
-    const shouldRedrawChart = (chart, intervalDuration) => {
+    const shouldRedrawChart = (section, chart, intervalDuration) => {
         const extremes = chart.xAxis[0].getExtremes();
         const duration = extremes.max - extremes.min;
 
-        return duration <= intervalDuration;
+        return section.style.opacity == '1' && duration <= intervalDuration;
     };
 
     const MAX_INTERVAL_DURATION = 15 * 60 * 1000;
@@ -461,19 +463,19 @@ setInterval(() => {
     updateSeries(motorLineChart, 0, time, averageTemperature);
     updateSeries(motorLineChart, 1, time, averageTemperature);
 
-    if (shouldRedrawChart(batteryChargingLineChart, MAX_INTERVAL_DURATION)) {
+    if (shouldRedrawChart(batteryContentSectionElement, batteryChargingLineChart, MAX_INTERVAL_DURATION)) {
         batteryChargingLineChart.redraw();
     }
 
-    if (shouldRedrawChart(batteryTemperatureLineChart, MAX_INTERVAL_DURATION)) {
+    if (shouldRedrawChart(batteryContentSectionElement, batteryTemperatureLineChart, MAX_INTERVAL_DURATION)) {
         batteryTemperatureLineChart.redraw();
     }
 
-    if (shouldRedrawChart(pvLineChart, MAX_INTERVAL_DURATION)) {
+    if (shouldRedrawChart(pvContentSectionElement, pvLineChart, MAX_INTERVAL_DURATION)) {
         pvLineChart.redraw();
     }
 
-    if (shouldRedrawChart(motorLineChart, MAX_INTERVAL_DURATION)) {
+    if (shouldRedrawChart(motorContentSectionElement, motorLineChart, MAX_INTERVAL_DURATION)) {
         motorLineChart.redraw();
     }
 
