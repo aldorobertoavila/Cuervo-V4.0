@@ -52,14 +52,26 @@
     text-align: center;
 }
 
+.overview-section__card {
+    margin: 10px;
+}
+
 @media screen and (max-width: 750px) {
     .page-header__title {
         font-size: 32px;
+    }
+
+    .overview-section__card {
+        width: 40%;
     }
 }
 
 @media screen and (min-width: 1080px) {
     .page-header__title {
         font-size: 48px;
+    }
+
+    .overview-section__card {
+        width: 200px;
     }
 }
