@@ -3,21 +3,21 @@
     background-color: #fff;
     box-shadow: 0 2.5px 2.5px 2.5px rgba(140, 140, 140, 0.5);
     max-width: 100%;
-    margin: 35px auto;
+    margin: 20px auto;
 }
 
 .collapsible-content-section__header {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
     color: #4d4d4d;
     cursor: pointer;
-    padding: 12px;
+    padding: 12px 24px;
     text-align: left;
     transition: 0.4s;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .collapsible-content-section__title {
@@ -92,7 +92,7 @@
     align-items: center;
     background-color: #fff;
     cursor: pointer;
-    padding: 12px;
+    padding: 12px 24px;
     border-top: 1px solid #ccc;
     transition: 0.4s;
 }
