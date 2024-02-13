@@ -29,17 +29,20 @@
 
   <link rel="stylesheet" type="text/css" href="styles/page.css">
 
-  <link rel="stylesheet" type="text/css" href="styles/components/linechart.css">
   <link rel="stylesheet" type="text/css" href="styles/components/battery.css">
   <link rel="stylesheet" type="text/css" href="styles/components/card.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/collapsible.css">
   <link rel="stylesheet" type="text/css" href="styles/components/compass.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/linechart.css">
   <link rel="stylesheet" type="text/css" href="styles/components/thermometer.css">
 </head>
 
 <body class="page">
+  <!-- 
   <header class="page-header">
     <h1 class="page-header__title">Cuervo V4.0</h1>
   </header>
+  -->
   <main class="page-content">
     <section class="page-section page-section--overview">
       <article class="overview-section__card overview-section__card--speed">
@@ -149,11 +152,12 @@
     </section>
 
     <section class="page-section page-section--main">
-      <article class="content-section">
-        <header class="content-section__header">
-          <h2 class="content-section__title">Banco de baterías</h2>
-        </header>
-        <div class="content-section__body">
+      <article class="collapsible-content-section">
+        <div class="collapsible-content-section__header">
+          <h3 class="collapsible-content-section__title">Banco de baterías</h3>
+          <button class="collapsible__toggle-header"></button>
+        </div>
+        <div class="collapsible-content-section__body">
           <figure class="chart-block">
             <div class="chart-block__line-chart--battery-charging"></div>
             <figcaption class="chart-block__description"></figcaption>
@@ -163,29 +167,40 @@
             <figcaption class="chart-block__description"></figcaption>
           </figure>
         </div>
+        <div class="collapsible-content-section__footer">
+          <button class="collapsible__toggle-footer"></button>
+        </div>
       </article>
 
-      <article class="content-section">
-        <header class="content-section__header">
-          <h2 class="content-section__title">Sistema fotovoltaico</h2>
-        </header>
-        <div class="content-section__body">
+      <article class="collapsible-content-section">
+        <div class="collapsible-content-section__header">
+          <h3 class="collapsible-content-section__title">Sistema fotovoltaico</h3>
+          <button class="collapsible__toggle-header"></button>
+        </div>
+        <div class="collapsible-content-section__body">
           <figure class="chart-block">
             <div class="chart-block__line-chart--pv"></div>
             <figcaption class="chart-block__description"></figcaption>
           </figure>
         </div>
+        <div class="collapsible-content-section__footer">
+          <button class="collapsible__toggle-footer"></button>
+        </div>
       </article>
-
-      <article class="content-section">
-        <header class="content-section__header">
-          <h2 class="content-section__title">Sistema de transmisión</h2>
-        </header>
-        <div class="content-section__body">
+      
+      <article class="collapsible-content-section">
+        <div class="collapsible-content-section__header">
+          <h3 class="collapsible-content-section__title">Sistema de transmisión</h3>
+          <button class="collapsible__toggle-header"></button>
+        </div>
+        <div class="collapsible-content-section__body">
           <figure class="chart-block">
             <div class="chart-block__line-chart--motor"></div>
             <figcaption class="chart-block__description"></figcaption>
           </figure>
+        </div>
+        <div class="collapsible-content-section__footer">
+          <button class="collapsible__toggle-footer"></button>
         </div>
       </article>
     </section>
@@ -199,6 +214,7 @@
   <!-- <script src="scripts/thermometer.js"></script> -->
 
   <script src="scripts/highcharts/linechart.js"></script>
+  <script src="scripts/collapsible.js"></script>
 </body>
 
 </html>
