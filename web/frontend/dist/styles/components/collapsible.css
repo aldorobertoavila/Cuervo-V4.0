@@ -1,25 +1,29 @@
 .collapsible-content-section {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2.5px 2.5px 2.5px rgba(140, 140, 140, 0.5);
+    max-width: 100%;
+    margin: 35px auto;
 }
 
 .collapsible-content-section__header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #eee;
-    color: #444;
+    background-color: #fff;
+    color: #4d4d4d;
     cursor: pointer;
     padding: 12px;
     text-align: left;
-    border: none;
-    outline: none;
     transition: 0.4s;
 }
 
 .collapsible-content-section__title {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
     margin: 0;
-    font-size: 16px;
 }
 
 .collapsible-content-section__toggle-header,
@@ -27,14 +31,23 @@
     background-color: transparent;
     border: none;
     font-size: 12px;
-    color: #777;
+    color: #fff;
     cursor: pointer;
     outline: none;
 }
 
-.collapsible__toggle-header::after {
+.collapsible-content-section__body {
+    padding: 0 12px;
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.6s ease-in-out;
+    opacity: 0;
+}
+
+.collapsible-content-section__toggle-header::after {
     content: '';
-    background-image: url(images/expand_more.png);
+    background-image: url(../../images/expand_more.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 24px;
@@ -44,7 +57,7 @@
 
 .collapsible-content-section__toggle-footer::after {
     content: '';
-    background-image: url(images/expand_more.png);
+    background-image: url(../../images/expand_more.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 24px;
@@ -54,43 +67,37 @@
 
 .collapsible-content-section.active .collapsible-content-section__toggle-header::after {
     content: '';
-    background-image: url(images/expand_less.png);
+    background-image: url(../../images/expand_less.png);
 }
 
 .collapsible-content-section.active .collapsible-content-section__toggle-footer::after {
     content: '';
-    background-image: url(images/expand_less.png);
+    background-image: url(../../images/expand_less.png);
 }
 
 .collapsible-content-section__toggle-header {
     margin-left: auto;
 }
 
-.collapsible-content-section__content {
-    padding: 0 12px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out, opacity 1s ease-in-out;
-    opacity: 0;
-}
-
-.collapsible-content-section__content.show {
+.collapsible-content-section__body.show {
     max-height: 500px;
     opacity: 1;
 }
 
 .collapsible-content-section__footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #eee;
+    background-color: #fff;
     cursor: pointer;
     padding: 12px;
     border-top: 1px solid #ccc;
     transition: 0.4s;
 }
 
+.collapsible-content-section__header:hover,
 .collapsible-content-section__footer:hover {
-    background-color: #ddd;
+    background-color: #eee;
 }

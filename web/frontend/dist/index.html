@@ -51,11 +51,13 @@
             <h2 class="card__title">Velocidad</h2>
           </header>
           <div class="card__body">
-            <figure class="card__figure">
+            <!--
+               <figure class="card__figure">
               <div class="battery">
                 <div class="battery__level" style="height:100%;"></div>
               </div>
-            </figure>
+            </figure> 
+            -->
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>km/h</p>
             </div>
@@ -72,11 +74,13 @@
             <h2 class="card__title">Temperatura</h2>
           </header>
           <div class="card__body">
-            <figure class="card__figure">
+            <!-- 
+              <figure class="card__figure">
               <div class="battery">
                 <div class="battery__level" style="height:100%;"></div>
               </div>
             </figure>
+            -->
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>°C</p>
             </div>
@@ -93,11 +97,13 @@
             <h2 class="card__title">Orientación</h2>
           </header>
           <div class="card__body">
+            <!-- 
             <figure class="card__figure">
               <div class="battery">
                 <div class="battery__level" style="height:100%;"></div>
               </div>
             </figure>
+            -->
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>%</p>
             </div>
@@ -115,9 +121,11 @@
           </header>
           <div class="card__body">
             <figure class="card__figure">
+              <!-- 
               <div class="battery">
                 <div class="battery__level" style="height:100%;"></div>
               </div>
+              -->
             </figure>
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>%</p>
@@ -136,9 +144,11 @@
           </header>
           <div class="card__body">
             <figure class="card__figure">
+              <!-- 
               <div class="battery">
                 <div class="battery__level" style="height:100%;"></div>
               </div>
+              -->
             </figure>
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>W</p>
@@ -153,11 +163,13 @@
 
     <section class="page-section page-section--main">
       <article class="collapsible-content-section">
-        <div class="collapsible-content-section__header">
+        <header class="collapsible-content-section__header">
           <h3 class="collapsible-content-section__title">Banco de baterías</h3>
-          <button class="collapsible__toggle-header"></button>
-        </div>
+          <button class="collapsible-content-section__toggle-header"></button>
+        </header>
         <div class="collapsible-content-section__body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <!--
           <figure class="chart-block">
             <div class="chart-block__line-chart--battery-charging"></div>
             <figcaption class="chart-block__description"></figcaption>
@@ -166,42 +178,49 @@
             <div class="chart-block__line-chart--battery-temperature"></div>
             <figcaption class="chart-block__description"></figcaption>
           </figure>
+          -->
         </div>
-        <div class="collapsible-content-section__footer">
-          <button class="collapsible__toggle-footer"></button>
-        </div>
+        <footer class="collapsible-content-section__footer">
+          <button class="collapsible-content-section__toggle-footer"></button>
+        </footer>
       </article>
 
       <article class="collapsible-content-section">
-        <div class="collapsible-content-section__header">
+        <header class="collapsible-content-section__header">
           <h3 class="collapsible-content-section__title">Sistema fotovoltaico</h3>
-          <button class="collapsible__toggle-header"></button>
-        </div>
+          <button class="collapsible-content-section__toggle-header"></button>
+        </header>
         <div class="collapsible-content-section__body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <!--
           <figure class="chart-block">
             <div class="chart-block__line-chart--pv"></div>
             <figcaption class="chart-block__description"></figcaption>
           </figure>
+          -->
         </div>
-        <div class="collapsible-content-section__footer">
-          <button class="collapsible__toggle-footer"></button>
-        </div>
+        <footer class="collapsible-content-section__footer">
+          <button class="collapsible-content-section__toggle-footer"></button>
+        </footer>
       </article>
       
       <article class="collapsible-content-section">
-        <div class="collapsible-content-section__header">
+        <header class="collapsible-content-section__header">
           <h3 class="collapsible-content-section__title">Sistema de transmisión</h3>
-          <button class="collapsible__toggle-header"></button>
-        </div>
+          <button class="collapsible-content-section__toggle-header"></button>
+        </header>
         <div class="collapsible-content-section__body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <!--
           <figure class="chart-block">
             <div class="chart-block__line-chart--motor"></div>
             <figcaption class="chart-block__description"></figcaption>
           </figure>
+          -->
         </div>
-        <div class="collapsible-content-section__footer">
-          <button class="collapsible__toggle-footer"></button>
-        </div>
+        <footer class="collapsible-content-section__footer">
+          <button class="collapsible-content-section__toggle-footer"></button>
+        </footer>
       </article>
     </section>
   </main>
@@ -210,11 +229,10 @@
   </footer>
 
   <!-- <script src="scripts/battery.js"></script> -->
-  <!-- <script src="scripts/compass.js"></script> -->
-  <!-- <script src="scripts/thermometer.js"></script> -->
-
-  <script src="scripts/highcharts/linechart.js"></script>
   <script src="scripts/collapsible.js"></script>
+  <!-- <script src="scripts/compass.js"></script> -->
+  <script src="scripts/linechart.js"></script>
+  <!-- <script src="scripts/thermometer.js"></script> -->
 </body>
 
 </html>

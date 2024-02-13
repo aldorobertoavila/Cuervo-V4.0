@@ -47,25 +47,6 @@
     margin: 0 auto;
 }
 
-.content-section {
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 2.5px 2.5px 2.5px rgba(140, 140, 140, 0.5);
-    padding: 20px;
-    max-width: calc(100% - 40px);
-    margin: 35px auto;
-}
-
-.content-section__header {}
-
-.content-section__title {}
-
-.content-section__body {}
-
-.chart-block {}
-
-.chart-block__description {}
-
 .page-footer {
     color: #ffffff;
     padding: 20px;

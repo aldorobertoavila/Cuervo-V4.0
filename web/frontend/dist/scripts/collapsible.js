@@ -3,7 +3,7 @@ const collapsibles = document.querySelectorAll('.collapsible-content-section');
 collapsibles.forEach(collapsible => {
   const header = collapsible.querySelector('.collapsible-content-section__header');
   const content = collapsible.querySelector('.collapsible-content-section__body');
-  // const footer = collapsible.querySelector('.collapsible-content-section__footer');
+  const footer = collapsible.querySelector('.collapsible-content-section__footer');
 
   const toggleContent = () => {
     collapsible.classList.toggle('active');
@@ -18,7 +18,7 @@ collapsibles.forEach(collapsible => {
   };
 
   header.addEventListener('click', toggleContent);
-  // footer.addEventListener('click', toggleContent);
+  footer.addEventListener('click', toggleContent);
 
   if (collapsible.classList.contains('active')) {
     content.style.maxHeight = content.scrollHeight + 'px';
