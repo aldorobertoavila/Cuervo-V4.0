@@ -1,0 +1,22 @@
+.number-block__text {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    line-height: initial;
+    word-wrap: break-word;
+}
+
+.number-block__value {
+    font-size: 44px;
+    color: #2a2a2a;
+}
+
+.number-block__unit {
+    font-size: 20px;
+    text-align: center;
+    color: #6e6e6e;
+    margin: 0;
+}

@@ -27,18 +27,20 @@
 
   <link rel="icon" href="images/favicon.png" sizes="32x32">
 
-  <link rel="stylesheet" type="text/css" href="styles/page.css">
-
   <link rel="stylesheet" type="text/css" href="styles/components/battery.css">
   <link rel="stylesheet" type="text/css" href="styles/components/card.css">
   <link rel="stylesheet" type="text/css" href="styles/components/collapsible.css">
   <link rel="stylesheet" type="text/css" href="styles/components/compass.css">
   <link rel="stylesheet" type="text/css" href="styles/components/linechart.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/number-block.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/page.css">
   <link rel="stylesheet" type="text/css" href="styles/components/thermometer.css">
+
+  <link rel="stylesheet" type="text/css" href="styles/media-queries.css">
 </head>
 
 <body class="page">
-  <header class="page-header">
+  <header class="page-header page-header--main-header">
     <nav class="page-navbar">
       <div class="page-navbar__header">
         <a href="#" class="page-navbar__logo"><img src="images/logo.png" alt="Logo"></a>
@@ -60,9 +62,12 @@
           <header class="card__header">
             <h2 class="card__title">Velocidad</h2>
           </header>
-          <div class="card__body card__body--speed">
-            <div class="card__number">
-              <p class="card__number--unit"><span class="card__number--value">0</span>km/h</p>
+          <div class="card__body">
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">km/h</span>
+              </p>
             </div>
           </div>
           <footer class="card__footer">
@@ -78,13 +83,18 @@
           </header>
           <div class="card__body">
             <figure class="card__widget card__widget--compass">
+              <!-- 
               <div class="thermometer">
                 <div class="thermometer__column" style="height:0" data-value="0°C"></div>
                 <div class="thermometer__graduations"></div>
               </div>
+              -->
             </figure>
-            <div class="card__number">
-              <p class="card__number--unit"><span class="card__number--value">0</span>°C</p>
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">°C</span>
+              </p>
             </div>
           </div>
           <footer class="card__footer">
@@ -100,6 +110,7 @@
           </header>
           <div class="card__body">
             <figure class="card__widget card__widget--compass">
+              <!-- 
               <div class="compass">
                 <div class="compass-direction compass-direction--north">N</div>
                 <div class="compass-direction compass-direction--east">E</div>
@@ -110,9 +121,13 @@
                   <div class="compass-arrow-part compass-arrow-part--down"></div>
                 </div>
               </div>
+              -->
             </figure>
-            <div class="card__number">
-              <p class="card__number--unit"><span class="card__number--value">0</span>°N</p>
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">°N</span>
+              </p>
             </div>
           </div>
           <footer class="card__footer">
@@ -132,8 +147,11 @@
                 <div class="battery__level" style="height:100%;"></div>
               </div>
             </figure>
-            <div class="card__number">
-              <p class="card__number--unit"><span class="card__number--value">0</span>%</p>
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">%</span>
+              </p>
             </div>
           </div>
           <footer class="card__footer">
@@ -148,8 +166,11 @@
             <h2 class="card__title">PV</h2>
           </header>
           <div class="card__body">
-            <div class="card__number">
-              <p class="card__number--unit"><span class="card__number--value">0</span>W</p>
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">W</span>
+              </p>
             </div>
           </div>
           <footer class="card__footer">
@@ -217,11 +238,12 @@
 
   </footer>
 
-  <script src="scripts/battery.js"></script>
+  <!-- <script src="scripts/battery.js"></script> -->
+  <script src="scripts/cards.js"></script>
   <script src="scripts/collapsible.js"></script>
-  <script src="scripts/compass.js"></script>
+  <!-- <script src="scripts/compass.js"></script> -->
   <script src="scripts/linechart.js"></script>
-  <script src="scripts/thermometer.js"></script>
+  <!-- <script src="scripts/thermometer.js"></script> -->
 </body>
 
 </html>

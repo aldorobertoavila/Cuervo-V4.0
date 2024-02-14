@@ -9,8 +9,8 @@
     justify-content: center;
     align-items: center;
     border: 8px solid #c5c5c5;
-    width: 200px;
-    height: 200px;
+    height: 100%;
+    width: 100%;
 }
 
 .compass-direction {
@@ -66,8 +66,6 @@
 @media (max-width: 750px) {
     .compass {
         border: 8px solid #c5c5c5;
-        width: 200px;
-        height: 200px;
     }
 
     .compass-arrow-part--up {

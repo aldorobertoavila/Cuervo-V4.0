@@ -91,33 +91,3 @@
     padding: 20px;
     text-align: center;
 }
-
-@media screen and (max-width: 750px) {
-    .page-header__title {
-        font-size: 32px;
-    }
-
-    .content-section {
-        width: 100%;
-    }
-
-    .overview-section__card {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        width: calc(50% - 20px);
-    }
-}
-
-@media screen and (min-width: 900px) {
-    .page-header__title {
-        font-size: 32px;
-    }
-
-    .content-section {
-        width: 100%;
-    }
-
-    .overview-section__card {
-        width: calc(20% - 10px);
-    }
-}

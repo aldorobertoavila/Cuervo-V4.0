@@ -1,21 +1,16 @@
-const UNITS = {
-	Celcius: "°C",
-	Fahrenheit: "°F"
-};
-
-let temperatureConfig = {
+const temperatureConfig = {
 	min: -20,
 	max: 80,
 	unit: "Celcius"
 };
 
+const thermometerColumnElement = document.querySelector(".thermometer__column");
+
 setInterval(() => {
-	let columnElement = document.querySelector(".thermometer__column");
+	const range = temperatureConfig.max - temperatureConfig.min;
+	const randomTemperature = (Math.random() * range + temperatureConfig.min).toFixed(2);
+	const adjustedHeight = (randomTemperature - temperatureConfig.min) / range * 100;
 
-	let range = temperatureConfig.max - temperatureConfig.min;
-	let randomTemperature = (Math.random() * range + temperatureConfig.min).toFixed(2);
-	let adjustedHeight = (randomTemperature - temperatureConfig.min) / range * 100;
-
-    columnElement.style.height = adjustedHeight + "%";
-	columnElement.dataset.value = randomTemperature + UNITS[temperatureConfig.unit];
+    thermometerColumnElement.style.height = adjustedHeight + "%";
+	thermometerColumnElement.dataset.value = randomTemperature + "°C";
 }, 1000);

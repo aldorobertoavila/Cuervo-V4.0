@@ -67,6 +67,9 @@ function createDefaultLineChartSettings(chartElement) {
         legend: {
             enabled: true
         },
+        credits: {
+            enabled: false
+        },
         yAxis: [],
         xAxis: {
             type: 'datetime',

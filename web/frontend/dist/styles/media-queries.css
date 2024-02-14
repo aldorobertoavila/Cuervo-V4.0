@@ -1,0 +1,49 @@
+@media screen and (max-width: 750px) {
+    .page-header--main-header .page-navbar__title {
+        font-size: 24px;
+    }
+
+    .page-section--main .collapside-content-section {
+        width: 100%;
+    }
+
+    .overview-section__card {
+        margin-top: 7.5px;
+        margin-bottom: 7.5px;
+        width: calc(50% - 10px);
+    }
+
+    .overview-section__card .card__title {
+        font-size: 16px;
+    }
+
+    .overview-section__card .number-block__value {
+        font-size: 28px;
+    }
+
+    .overview-section__card .number-block__unit {
+        padding-right: 0;
+    }
+
+    .overview-section__card .card__body {
+        padding: 5px 12px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .page-header--main-header .page-navbar__title {
+        font-size: 32px;
+    }
+
+    .page-section--main .collapside-content-section {
+        width: 100%;
+    }
+
+    .overview-section__card {
+        width: calc(20% - 10px);
+    }
+
+    .overview-section__card .card__body {
+        padding: 5px 25px;
+    }
+}
