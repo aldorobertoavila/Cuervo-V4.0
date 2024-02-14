@@ -29,27 +29,20 @@
 
   <link rel="stylesheet" type="text/css" href="styles/page.css">
 
+  <link rel="stylesheet" type="text/css" href="styles/components/battery.css">
   <link rel="stylesheet" type="text/css" href="styles/components/card.css">
   <link rel="stylesheet" type="text/css" href="styles/components/collapsible.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/compass.css">
   <link rel="stylesheet" type="text/css" href="styles/components/linechart.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/thermometer.css">
 </head>
 
 <body class="page">
+  <!-- 
   <header class="page-header">
-    <nav class="page-navbar">
-      <div class="page-navbar__header">
-        <a href="#" class="page-navbar__logo"><img src="images/logo.png" alt="Logo"></a>
-        <h1 class="page-navbar__title">Cuervo V4.0</h1>
-      </div>
-      <div class="page-navbar__items">
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/account_circle.png" alt="Account Icon"></a>
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/logout.png" alt="Logout Icon"></a>
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/download.png" alt="Download Icon"></a>
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/settings.png" alt="Settings Icon"></a>
-      </div>
-    </nav>
+    <h1 class="page-header__title">Cuervo V4.0</h1>
   </header>
-
+  -->
   <main class="page-content">
     <section class="page-section page-section--overview">
       <article class="overview-section__card overview-section__card--speed">
@@ -57,7 +50,14 @@
           <header class="card__header">
             <h2 class="card__title">Velocidad</h2>
           </header>
-          <div class="card__body card__body--speed">
+          <div class="card__body">
+            <!--
+               <figure class="card__figure">
+              <div class="battery">
+                <div class="battery__level" style="height:100%;"></div>
+              </div>
+            </figure> 
+            -->
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>km/h</p>
             </div>
@@ -74,6 +74,13 @@
             <h2 class="card__title">Temperatura</h2>
           </header>
           <div class="card__body">
+            <!-- 
+              <figure class="card__figure">
+              <div class="battery">
+                <div class="battery__level" style="height:100%;"></div>
+              </div>
+            </figure>
+            -->
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>°C</p>
             </div>
@@ -90,6 +97,13 @@
             <h2 class="card__title">Orientación</h2>
           </header>
           <div class="card__body">
+            <!-- 
+            <figure class="card__figure">
+              <div class="battery">
+                <div class="battery__level" style="height:100%;"></div>
+              </div>
+            </figure>
+            -->
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>%</p>
             </div>
@@ -106,6 +120,13 @@
             <h2 class="card__title">Batería</h2>
           </header>
           <div class="card__body">
+            <figure class="card__figure">
+              <!-- 
+              <div class="battery">
+                <div class="battery__level" style="height:100%;"></div>
+              </div>
+              -->
+            </figure>
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>%</p>
             </div>
@@ -122,6 +143,13 @@
             <h2 class="card__title">PV</h2>
           </header>
           <div class="card__body">
+            <figure class="card__figure">
+              <!-- 
+              <div class="battery">
+                <div class="battery__level" style="height:100%;"></div>
+              </div>
+              -->
+            </figure>
             <div class="card__number">
               <p class="card__number--unit"><span class="card__number--value">0</span>W</p>
             </div>
@@ -169,7 +197,7 @@
           <button class="collapsible-content-section__toggle-footer"></button>
         </footer>
       </article>
-
+      
       <article class="collapsible-content-section">
         <header class="collapsible-content-section__header">
           <h3 class="collapsible-content-section__title">Sistema de transmisión</h3>
@@ -191,8 +219,11 @@
 
   </footer>
 
+  <!-- <script src="scripts/battery.js"></script> -->
   <script src="scripts/collapsible.js"></script>
+  <!-- <script src="scripts/compass.js"></script> -->
   <script src="scripts/linechart.js"></script>
+  <!-- <script src="scripts/thermometer.js"></script> -->
 </body>
 
 </html>
