@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cuervo V4.0 - Login</title>
+    <link rel="icon" href="images/favicon.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="styles/components/card.css">
+    <link rel="stylesheet" type="text/css" href="styles/components/page.css">
+    <style>
+        /* Styling for the login form */
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"],
+        .login-container button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .login-container button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body class="page">
+    <header class="page-header page-header--main-header">
+        <nav class="page-navbar">
+            <div class="page-navbar__header">
+                <!-- <a href="#" class="page-navbar__logo"><img src="images/logo.png" alt="Logo"></a> -->
+                <h1 class="page-navbar__title">Cuervo V4.0</h1>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="text" id="email" name="email" placeholder="Email" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="page-footer"></footer>
+
+    <!-- Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/init.js?useEmulator=true"></script>
+    <script>
+        // Firebase configuration
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Get a reference to the Firebase auth service
+        var auth = firebase.auth();
+
+        // Handle form submission
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Sign in with email and password
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    alert("Login successful!");
+                    // Redirect to dashboard or perform other actions after successful login
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        });
+    </script>
+</body>
+
+</html>

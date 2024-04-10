@@ -1,19 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const loadEl = document.querySelector('#load');
-    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-    // // The Firebase SDK is initialized and available here!
-    //
-    // firebase.auth().onAuthStateChanged(user => { });
-    // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-    // firebase.firestore().doc('/foo/bar').get().then(() => { });
-    // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-    // firebase.messaging().requestPermission().then(() => { });
-    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-    // firebase.analytics(); // call to activate
-    // firebase.analytics().logEvent('tutorial_completed');
-    // firebase.performance(); // call to activate
-    //
-    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    const loadElement = document.querySelector('#load');
 
     try {
         let app = firebase.app();
@@ -28,9 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
             'remoteConfig',
             'performance',
         ].filter(feature => typeof app[feature] === 'function');
-        loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        loadElement.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+
     } catch (e) {
         console.error(e);
-        loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        loadElement.textContent = 'Error loading the Firebase SDK, check the console.';
     }
 });

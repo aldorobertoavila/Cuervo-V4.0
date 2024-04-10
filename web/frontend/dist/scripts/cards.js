@@ -14,7 +14,6 @@ const formatTimeDifference = (newDateTime, oldDateTime) => {
     return seconds + "s";
 }
 
-// TODO: return a function to prevent query selector calls
 const updateCard = (cardElement, numberValue) => {
     const numberElement = cardElement.querySelector('.number-block__value');
     const timeElement = cardElement.querySelector(".card__date-time");

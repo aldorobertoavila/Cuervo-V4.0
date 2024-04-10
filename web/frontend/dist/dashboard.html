@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cuervo V4.0</title>
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-functions-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-remote-config-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-performance-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/init.js?useEmulator=true"></script>
+
+  <link rel="icon" href="images/favicon.png" sizes="32x32">
+
+  <link rel="stylesheet" type="text/css" href="styles/components/card.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/collapsible.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/linechart.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/number-block.css">
+  <link rel="stylesheet" type="text/css" href="styles/components/page.css">
+  <link rel="stylesheet" type="text/css" href="styles/media-queries.css">
+</head>
+
+<body class="page">
+  <header class="page-header page-header--main-header">
+    <nav class="page-navbar">
+      <div class="page-navbar__header">
+        <!-- <a href="#" class="page-navbar__logo"><img src="images/logo.png" alt="Logo"></a> -->
+        <h1 class="page-navbar__title">Cuervo V4.0</h1>
+      </div>
+      <div class="page-navbar__items">
+        <a href="#" class="page-navbar__icon" role="button"><img src="images/account_circle.png" alt="Account Icon"></a>
+        <a href="#" class="page-navbar__icon" role="button"><img src="images/logout.png" alt="Logout Icon"></a>
+        <a href="#" class="page-navbar__icon" role="button"><img src="images/download.png" alt="Download Icon"></a>
+        <a href="#" class="page-navbar__icon" role="button"><img src="images/settings.png" alt="Settings Icon"></a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <section class="page-section page-section--overview">
+      <article class="overview-section__card overview-section__card--speed">
+        <div class="card">
+          <header class="card__header">
+            <h2 class="card__title">Velocidad</h2>
+          </header>
+          <div class="card__body">
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">km/h</span>
+              </p>
+            </div>
+          </div>
+          <footer class="card__footer">
+            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
+          </footer>
+        </div>
+      </article>
+
+      <article class="overview-section__card overview-section__card--temperature">
+        <div class="card">
+          <header class="card__header">
+            <h2 class="card__title">Temperatura</h2>
+          </header>
+          <div class="card__body">
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">°C</span>
+              </p>
+            </div>
+          </div>
+          <footer class="card__footer">
+            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
+          </footer>
+        </div>
+      </article>
+
+      <article class="overview-section__card overview-section__card--orientation">
+        <div class="card">
+          <header class="card__header">
+            <h2 class="card__title">Orientación</h2>
+          </header>
+          <div class="card__body">
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">°N</span>
+              </p>
+            </div>
+          </div>
+          <footer class="card__footer">
+            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
+          </footer>
+        </div>
+      </article>
+
+      <article class="overview-section__card overview-section__card--battery">
+        <div class="card">
+          <header class="card__header">
+            <h2 class="card__title">Batería</h2>
+          </header>
+          <div class="card__body">
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">%</span>
+              </p>
+            </div>
+          </div>
+          <footer class="card__footer">
+            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
+          </footer>
+        </div>
+      </article>
+
+      <article class="overview-section__card overview-section__card--pv">
+        <div class="card">
+          <header class="card__header">
+            <h2 class="card__title">Panel Solar</h2>
+          </header>
+          <div class="card__body">
+            <div class="number-block">
+              <p class="number-block__text">
+                <span class="number-block__value">0</span>
+                <span class="number-block__unit">W</span>
+              </p>
+            </div>
+          </div>
+          <footer class="card__footer">
+            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
+          </footer>
+        </div>
+      </article>
+    </section>
+
+    <section class="page-section page-section--main">
+      <article class="collapsible-content-section">
+        <header class="collapsible-content-section__header">
+          <h3 class="collapsible-content-section__title">Banco de baterías</h3>
+          <button class="collapsible-content-section__toggle-header"></button>
+        </header>
+        <div class="collapsible-content-section__body collapsible-content-section__body--battery">
+          <figure class="chart-block">
+            <div class="chart-block__line-chart--battery-charging"></div>
+            <figcaption class="chart-block__description"></figcaption>
+          </figure>
+          <figure class="chart-block">
+            <div class="chart-block__line-chart--battery-temperature"></div>
+            <figcaption class="chart-block__description"></figcaption>
+          </figure>
+        </div>
+        <footer class="collapsible-content-section__footer">
+          <button class="collapsible-content-section__toggle-footer"></button>
+        </footer>
+      </article>
+
+      <article class="collapsible-content-section">
+        <header class="collapsible-content-section__header">
+          <h3 class="collapsible-content-section__title">Sistema fotovoltaico</h3>
+          <button class="collapsible-content-section__toggle-header"></button>
+        </header>
+        <div class="collapsible-content-section__body collapsible-content-section__body--pv">
+          <figure class="chart-block">
+            <div class="chart-block__line-chart--pv"></div>
+            <figcaption class="chart-block__description"></figcaption>
+          </figure>
+        </div>
+        <footer class="collapsible-content-section__footer">
+          <button class="collapsible-content-section__toggle-footer"></button>
+        </footer>
+      </article>
+
+      <article class="collapsible-content-section">
+        <header class="collapsible-content-section__header">
+          <h3 class="collapsible-content-section__title">Sistema de tracción</h3>
+          <button class="collapsible-content-section__toggle-header"></button>
+        </header>
+        <div class="collapsible-content-section__body collapsible-content-section__body--motor">
+          <figure class="chart-block">
+            <div class="chart-block__line-chart--motor"></div>
+            <figcaption class="chart-block__description"></figcaption>
+          </figure>
+        </div>
+        <footer class="collapsible-content-section__footer">
+          <button class="collapsible-content-section__toggle-footer"></button>
+        </footer>
+      </article>
+    </section>
+  </main>
+  <footer class="page-footer">
+
+  </footer>
+
+  <script src="scripts/cards.js"></script>
+  <script src="scripts/collapsible.js"></script>
+  <script src="scripts/linechart.js"></script>
+</body>
+
+</html>

@@ -1,10 +1,3 @@
-function randomGaussian(mean, stdDev) {
-    const theta = Math.cos(2.0 * Math.PI * Math.random());
-    const rho = Math.sqrt(-2.0 * Math.log(Math.random()))
-
-    return theta * rho * stdDev + mean;
-}
-
 function calculateAverage(numberArray) {
     const sum = numberArray.reduce((total, number) => total + number, 0);
     const average = sum / numberArray.length;
@@ -12,14 +5,8 @@ function calculateAverage(numberArray) {
     return parseFloat(average.toFixed(2));
 }
 
-function generateRandomGaussian(min, max, mean, stdDev) {
-    const number = Math.max(min, Math.min(max, randomGaussian(mean, stdDev)));
-
-    return parseFloat(number.toFixed(2));
-}
-
 function generateTemperatures() {
-    const rawTemperatures = Array.from({ length: 4 }, () => generateRandomGaussian(20, 40, 30, 2));
+    const rawTemperatures = Array.from({ length: 4 }, () => Math.random() * 100);
 
     const minTemperature = Math.min(...rawTemperatures);
     const maxTemperature = Math.max(...rawTemperatures);

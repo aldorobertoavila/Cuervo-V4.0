@@ -27,15 +27,11 @@
 
   <link rel="icon" href="images/favicon.png" sizes="32x32">
 
-  <link rel="stylesheet" type="text/css" href="styles/components/battery.css">
   <link rel="stylesheet" type="text/css" href="styles/components/card.css">
   <link rel="stylesheet" type="text/css" href="styles/components/collapsible.css">
-  <link rel="stylesheet" type="text/css" href="styles/components/compass.css">
   <link rel="stylesheet" type="text/css" href="styles/components/linechart.css">
   <link rel="stylesheet" type="text/css" href="styles/components/number-block.css">
   <link rel="stylesheet" type="text/css" href="styles/components/page.css">
-  <link rel="stylesheet" type="text/css" href="styles/components/thermometer.css">
-
   <link rel="stylesheet" type="text/css" href="styles/media-queries.css">
 </head>
 
@@ -43,207 +39,82 @@
   <header class="page-header page-header--main-header">
     <nav class="page-navbar">
       <div class="page-navbar__header">
-        <a href="#" class="page-navbar__logo"><img src="images/logo.png" alt="Logo"></a>
+        <!-- <a href="#" class="page-navbar__logo"><img src="images/logo.png" alt="Logo"></a> -->
         <h1 class="page-navbar__title">Cuervo V4.0</h1>
       </div>
       <div class="page-navbar__items">
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/account_circle.png" alt="Account Icon"></a>
+        <!-- <a href="#" class="page-navbar__icon" role="button"><img src="images/account_circle.png" alt="Account Icon"></a>
         <a href="#" class="page-navbar__icon" role="button"><img src="images/logout.png" alt="Logout Icon"></a>
         <a href="#" class="page-navbar__icon" role="button"><img src="images/download.png" alt="Download Icon"></a>
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/settings.png" alt="Settings Icon"></a>
+        <a href="#" class="page-navbar__icon" role="button"><img src="images/settings.png" alt="Settings Icon"></a> -->
       </div>
     </nav>
   </header>
 
   <main class="page-content">
-    <section class="page-section page-section--overview">
-      <article class="overview-section__card overview-section__card--speed">
-        <div class="card">
-          <header class="card__header">
-            <h2 class="card__title">Velocidad</h2>
-          </header>
-          <div class="card__body">
-            <div class="number-block">
-              <p class="number-block__text">
-                <span class="number-block__value">0</span>
-                <span class="number-block__unit">km/h</span>
-              </p>
-            </div>
-          </div>
-          <footer class="card__footer">
-            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
-          </footer>
-        </div>
-      </article>
-
-      <article class="overview-section__card overview-section__card--temperature">
-        <div class="card">
-          <header class="card__header">
-            <h2 class="card__title">Temperatura</h2>
-          </header>
-          <div class="card__body">
-            <figure class="card__widget card__widget--compass">
-              <!-- 
-              <div class="thermometer">
-                <div class="thermometer__column" style="height:0" data-value="0°C"></div>
-                <div class="thermometer__graduations"></div>
-              </div>
-              -->
-            </figure>
-            <div class="number-block">
-              <p class="number-block__text">
-                <span class="number-block__value">0</span>
-                <span class="number-block__unit">°C</span>
-              </p>
-            </div>
-          </div>
-          <footer class="card__footer">
-            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
-          </footer>
-        </div>
-      </article>
-
-      <article class="overview-section__card overview-section__card--orientation">
-        <div class="card">
-          <header class="card__header">
-            <h2 class="card__title">Orientación</h2>
-          </header>
-          <div class="card__body">
-            <figure class="card__widget card__widget--compass">
-              <!-- 
-              <div class="compass">
-                <div class="compass-direction compass-direction--north">N</div>
-                <div class="compass-direction compass-direction--east">E</div>
-                <div class="compass-direction compass-direction--west">W</div>
-                <div class="compass-direction compass-direction--south">S</div>
-                <div class="compass-arrow">
-                  <div class="compass-arrow-part compass-arrow-part--up"></div>
-                  <div class="compass-arrow-part compass-arrow-part--down"></div>
-                </div>
-              </div>
-              -->
-            </figure>
-            <div class="number-block">
-              <p class="number-block__text">
-                <span class="number-block__value">0</span>
-                <span class="number-block__unit">°N</span>
-              </p>
-            </div>
-          </div>
-          <footer class="card__footer">
-            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
-          </footer>
-        </div>
-      </article>
-
-      <article class="overview-section__card overview-section__card--battery">
-        <div class="card">
-          <header class="card__header">
-            <h2 class="card__title">Batería</h2>
-          </header>
-          <div class="card__body">
-            <figure class="card__widget card__widget--compass">
-              <div class="battery">
-                <div class="battery__level" style="height:100%;"></div>
-              </div>
-            </figure>
-            <div class="number-block">
-              <p class="number-block__text">
-                <span class="number-block__value">0</span>
-                <span class="number-block__unit">%</span>
-              </p>
-            </div>
-          </div>
-          <footer class="card__footer">
-            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
-          </footer>
-        </div>
-      </article>
-
-      <article class="overview-section__card overview-section__card--pv">
-        <div class="card">
-          <header class="card__header">
-            <h2 class="card__title">PV</h2>
-          </header>
-          <div class="card__body">
-            <div class="number-block">
-              <p class="number-block__text">
-                <span class="number-block__value">0</span>
-                <span class="number-block__unit">W</span>
-              </p>
-            </div>
-          </div>
-          <footer class="card__footer">
-            <small class="card__disclaimer">Hace <time class="card__date-time">0s</time></small>
-          </footer>
-        </div>
-      </article>
-    </section>
-
-    <section class="page-section page-section--main">
-      <article class="collapsible-content-section">
-        <header class="collapsible-content-section__header">
-          <h3 class="collapsible-content-section__title">Banco de baterías</h3>
-          <button class="collapsible-content-section__toggle-header"></button>
-        </header>
-        <div class="collapsible-content-section__body collapsible-content-section__body--battery">
-          <figure class="chart-block">
-            <div class="chart-block__line-chart--battery-charging"></div>
-            <figcaption class="chart-block__description"></figcaption>
-          </figure>
-          <figure class="chart-block">
-            <div class="chart-block__line-chart--battery-temperature"></div>
-            <figcaption class="chart-block__description"></figcaption>
-          </figure>
-        </div>
-        <footer class="collapsible-content-section__footer">
-          <button class="collapsible-content-section__toggle-footer"></button>
-        </footer>
-      </article>
-
-      <article class="collapsible-content-section">
-        <header class="collapsible-content-section__header">
-          <h3 class="collapsible-content-section__title">Sistema fotovoltaico</h3>
-          <button class="collapsible-content-section__toggle-header"></button>
-        </header>
-        <div class="collapsible-content-section__body collapsible-content-section__body--pv">
-          <figure class="chart-block">
-            <div class="chart-block__line-chart--pv"></div>
-            <figcaption class="chart-block__description"></figcaption>
-          </figure>
-        </div>
-        <footer class="collapsible-content-section__footer">
-          <button class="collapsible-content-section__toggle-footer"></button>
-        </footer>
-      </article>
-
-      <article class="collapsible-content-section">
-        <header class="collapsible-content-section__header">
-          <h3 class="collapsible-content-section__title">Sistema de transmisión</h3>
-          <button class="collapsible-content-section__toggle-header"></button>
-        </header>
-        <div class="collapsible-content-section__body collapsible-content-section__body--motor">
-          <figure class="chart-block">
-            <div class="chart-block__line-chart--motor"></div>
-            <figcaption class="chart-block__description"></figcaption>
-          </figure>
-        </div>
-        <footer class="collapsible-content-section__footer">
-          <button class="collapsible-content-section__toggle-footer"></button>
-        </footer>
-      </article>
+    <section class="page-section page-section--login">
+      <!-- <a href="./dashboard.html"></a> -->
+      <button id="signInButton">Create Account / Sign In</button>
+      <button id="signOutButton">Sign Out</button>
+    
+      <div id="message">
+        <p>You have signed in as <span id="userName"></span> with the email <span id="userEmail"></span> </p>
+      </div>
     </section>
   </main>
   <footer class="page-footer">
 
   </footer>
 
-  <!-- <script src="scripts/battery.js"></script> -->
-  <script src="scripts/cards.js"></script>
-  <script src="scripts/collapsible.js"></script>
-  <!-- <script src="scripts/compass.js"></script> -->
-  <script src="scripts/linechart.js"></script>
-  <!-- <script src="scripts/thermometer.js"></script> -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider()
+
+    const signInButton = document.getElementById("signInButton");
+    const signOutButton = document.getElementById("signOutButton");
+    const message = document.getElementById("message");
+    const userName = document.getElementById("userName");
+    const userEmail = document.getElementById("userEmail");
+
+    signOutButton.style.display = "none";
+    message.style.display = "none";
+
+    const userSignIn = async () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user
+          console.log(user);
+        }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message
+        })
+    }
+
+    const userSignOut = async () => {
+      signOut(auth).then(() => {
+        alert("You have signed out successfully!");
+      }).catch((error) => { })
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        signOutButton.style.display = "block";
+        message.style.display = "block";
+        userName.innerHTML = user.displayName;
+        userEmail.innerHTML = user.email
+      } else {
+        signOutButton.style.display = "none";
+        message.style.display = "none";
+      }
+    })
+
+    signInButton.addEventListener('click', userSignIn);
+    signOutButton.addEventListener('click', userSignOut);
+  </script>
 </body>
 
 </html>
