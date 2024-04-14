@@ -112,8 +112,9 @@ function createDefaultLineChartSettings(chartElement) {
                 text: '1h'
             },
             {
-                type: 'all',
-                text: 'All'
+                count: 1,
+                type: 'day',
+                text: '1d'
             }],
             inputEnabled: true,
             selected: 0
@@ -129,7 +130,7 @@ function createBatteryChargingLineChart(chartElement, initialData) {
         yAxis: [
             {
                 title: {
-                    text: 'Voltage'
+                    text: 'Voltaje'
                 },
                 labels: {
                     format: '{value}V'
@@ -141,7 +142,7 @@ function createBatteryChargingLineChart(chartElement, initialData) {
             },
             {
                 title: {
-                    text: 'Current'
+                    text: 'Corriente'
                 },
                 labels: {
                     format: '{value}A'
@@ -154,7 +155,7 @@ function createBatteryChargingLineChart(chartElement, initialData) {
             },
             {
                 title: {
-                    text: 'Power'
+                    text: 'Potencia'
                 },
                 labels: {
                     format: '{value}W'
@@ -168,7 +169,7 @@ function createBatteryChargingLineChart(chartElement, initialData) {
         ],
         series: [
             {
-                name: 'Voltage',
+                name: 'Voltaje',
                 marker: {
                     symbol: 'circle',
                     fillColor: 'white',
@@ -180,7 +181,7 @@ function createBatteryChargingLineChart(chartElement, initialData) {
                 valueSuffix: "V"
             },
             {
-                name: 'Current',
+                name: 'Corriente',
                 marker: {
                     symbol: 'circle',
                     fillColor: 'white',
@@ -192,7 +193,7 @@ function createBatteryChargingLineChart(chartElement, initialData) {
                 valueSuffix: "A"
             },
             {
-                name: 'Power',
+                name: 'Potencia',
                 marker: {
                     symbol: 'circle',
                     fillColor: 'white',
@@ -216,7 +217,7 @@ function createBatteryTemperatureLineChart(chartElement, initialData) {
         yAxis: [
             {
                 title: {
-                    text: 'Temperature'
+                    text: 'Temperatura'
                 },
                 labels: {
                     format: '{value}°C'
@@ -229,7 +230,7 @@ function createBatteryTemperatureLineChart(chartElement, initialData) {
             },
             {
                 title: {
-                    text: 'Temperature'
+                    text: 'Temperatura'
                 },
                 labels: {
                     format: '{value}°C'
@@ -242,7 +243,7 @@ function createBatteryTemperatureLineChart(chartElement, initialData) {
         ],
         series: [
             {
-                name: 'Average Temperature',
+                name: 'Temperatura promedio',
                 zIndex: 1,
                 marker: {
                     symbol: 'circle',
@@ -255,7 +256,7 @@ function createBatteryTemperatureLineChart(chartElement, initialData) {
                 valueSuffix: "°C"
             },
             {
-                name: 'Temperature Range',
+                name: 'Rango de temperatura',
                 type: 'arearange',
                 lineWidth: 0,
                 color: Highcharts.getOptions().colors[0],
@@ -272,7 +273,7 @@ function createBatteryTemperatureLineChart(chartElement, initialData) {
                 valueSuffix: "°C"
             },
             {
-                name: 'Temperature Battery 1',
+                name: 'Temperatura batería 1',
                 marker: {
                     symbol: 'circle',
                     fillColor: 'white',
@@ -284,7 +285,7 @@ function createBatteryTemperatureLineChart(chartElement, initialData) {
                 valueSuffix: "°C"
             },
             {
-                name: 'Temperature Battery 2',
+                name: 'Temperatura batería 2',
                 marker: {
                     symbol: 'circle',
                     fillColor: 'white',
@@ -308,7 +309,7 @@ function createMotorLineChart(chartElement, initialData) {
         yAxis: [
             {
                 title: {
-                    text: 'Speed'
+                    text: 'Velocidad'
                 },
                 labels: {
                     format: '{value}km/h'
@@ -320,7 +321,7 @@ function createMotorLineChart(chartElement, initialData) {
             },
             {
                 title: {
-                    text: 'Temperature'
+                    text: 'Temperatura'
                 },
                 labels: {
                     format: '{value}°C'
@@ -334,7 +335,7 @@ function createMotorLineChart(chartElement, initialData) {
         ],
         series: [
             {
-                name: 'Temperature',
+                name: 'Temperatura',
                 zIndex: 1,
                 marker: {
                     symbol: 'circle',
@@ -347,7 +348,7 @@ function createMotorLineChart(chartElement, initialData) {
                 valueSuffix: "°C"
             },
             {
-                name: 'Speed',
+                name: 'Velocidad',
                 zIndex: 1,
                 marker: {
                     symbol: 'circle',
@@ -376,6 +377,34 @@ const FIREBASE_CONFIG = {
     measurementId: "G-3PV4JYTKH2"
 
 };
+
+Highcharts.setOptions({
+    lang: {
+        contextButtonTitle: 'Exportar gráfico',
+        decimalPoint: ',',
+        viewFullscreen: "Ver en pantalla completa",
+        downloadCSV: "Descargar como CSV",
+        downloadJPEG: 'Descargar como JPEG',
+        downloadPDF: 'Descargar como PDF',
+        downloadPNG: 'Descargar como PNG',
+        downloadSVG: 'Descargar como SVG',
+        rangeSelectorFrom: "De",
+        rangeSelectorTo: "a",
+        rangeSelectorZoom: "Periodo",
+        drillUpText: 'Volver a {series.name}',
+        loading: 'Cargando...',
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        noData: 'No hay datos para mostrar',
+        numericSymbols: ["k", "M", "G", "T", "P", "E"],
+        printChart: 'Imprimir gráfico',
+        resetZoom: 'Restablecer zoom',
+        resetZoomTitle: 'Restablecer zoom nivel 1:1',
+        shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        shortWeekdays: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+        thousandsSep: '.',
+        weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+    }
+});
 
 const MAX_INTERVAL_DURATION = 15 * 60 * 1000;
 
