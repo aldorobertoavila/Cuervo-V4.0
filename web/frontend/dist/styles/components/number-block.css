@@ -1,3 +1,8 @@
+.number-block {
+    display: flex;
+    justify-content: center;
+}
+
 .number-block__text {
     font-family: 'Arial', sans-serif;
     font-size: 16px;

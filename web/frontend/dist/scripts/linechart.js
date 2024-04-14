@@ -416,57 +416,57 @@ const batteryTemperatureLineChart = createBatteryTemperatureLineChart(batteryTem
 const pvLineChart = createBatteryChargingLineChart(pvLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
 const motorLineChart = createMotorLineChart(motorLineChartElement, { averageSeries: initialData.battery.temperature.average, rangeSeries: initialData.battery.temperature.range });
 
-setInterval(() => {
-    const updateSeries = (chart, seriesIndex, time, ...data) => {
-        chart.series[seriesIndex].addPoint([time, ...data], false, false);
-    };
+// setInterval(() => {
+//     const updateSeries = (chart, seriesIndex, time, ...data) => {
+//         chart.series[seriesIndex].addPoint([time, ...data], false, false);
+//     };
 
-    const shouldRedrawChart = (section, chart, intervalDuration) => {
-        const extremes = chart.xAxis[0].getExtremes();
-        const duration = extremes.max - extremes.min;
+//     const shouldRedrawChart = (section, chart, intervalDuration) => {
+//         const extremes = chart.xAxis[0].getExtremes();
+//         const duration = extremes.max - extremes.min;
 
-        return section.style.opacity == '1' && duration <= intervalDuration;
-    };
+//         return section.style.opacity == '1' && duration <= intervalDuration;
+//     };
 
-    const MAX_INTERVAL_DURATION = 15 * 60 * 1000;
+//     const MAX_INTERVAL_DURATION = 15 * 60 * 1000;
 
-    const time = new Date().getTime();
+//     const time = new Date().getTime();
 
-    const [rawTemperatures, averageTemperature, minTemperature, maxTemperature] = generateTemperatures();
-    const [batteryTemperature1, batteryTemperature2, batteryTemperature3, batteryTemperature4] = rawTemperatures;
+//     const [rawTemperatures, averageTemperature, minTemperature, maxTemperature] = generateTemperatures();
+//     const [batteryTemperature1, batteryTemperature2, batteryTemperature3, batteryTemperature4] = rawTemperatures;
 
-    updateSeries(batteryChargingLineChart, 0, time, averageTemperature);
-    updateSeries(batteryChargingLineChart, 1, time, averageTemperature);
-    updateSeries(batteryChargingLineChart, 2, time, averageTemperature);
+//     updateSeries(batteryChargingLineChart, 0, time, averageTemperature);
+//     updateSeries(batteryChargingLineChart, 1, time, averageTemperature);
+//     updateSeries(batteryChargingLineChart, 2, time, averageTemperature);
 
-    updateSeries(batteryTemperatureLineChart, 0, time, averageTemperature);
-    updateSeries(batteryTemperatureLineChart, 1, time, minTemperature, maxTemperature);
-    updateSeries(batteryTemperatureLineChart, 2, time, batteryTemperature1);
-    updateSeries(batteryTemperatureLineChart, 3, time, batteryTemperature2);
-    updateSeries(batteryTemperatureLineChart, 4, time, batteryTemperature3);
-    updateSeries(batteryTemperatureLineChart, 5, time, batteryTemperature4);
+//     updateSeries(batteryTemperatureLineChart, 0, time, averageTemperature);
+//     updateSeries(batteryTemperatureLineChart, 1, time, minTemperature, maxTemperature);
+//     updateSeries(batteryTemperatureLineChart, 2, time, batteryTemperature1);
+//     updateSeries(batteryTemperatureLineChart, 3, time, batteryTemperature2);
+//     updateSeries(batteryTemperatureLineChart, 4, time, batteryTemperature3);
+//     updateSeries(batteryTemperatureLineChart, 5, time, batteryTemperature4);
 
-    updateSeries(pvLineChart, 0, time, averageTemperature);
-    updateSeries(pvLineChart, 1, time, averageTemperature);
-    updateSeries(pvLineChart, 2, time, averageTemperature);
+//     updateSeries(pvLineChart, 0, time, averageTemperature);
+//     updateSeries(pvLineChart, 1, time, averageTemperature);
+//     updateSeries(pvLineChart, 2, time, averageTemperature);
 
-    updateSeries(motorLineChart, 0, time, averageTemperature);
-    updateSeries(motorLineChart, 1, time, averageTemperature);
+//     updateSeries(motorLineChart, 0, time, averageTemperature);
+//     updateSeries(motorLineChart, 1, time, averageTemperature);
 
-    if (shouldRedrawChart(batteryContentSectionElement, batteryChargingLineChart, MAX_INTERVAL_DURATION)) {
-        batteryChargingLineChart.redraw();
-    }
+//     if (shouldRedrawChart(batteryContentSectionElement, batteryChargingLineChart, MAX_INTERVAL_DURATION)) {
+//         batteryChargingLineChart.redraw();
+//     }
 
-    if (shouldRedrawChart(batteryContentSectionElement, batteryTemperatureLineChart, MAX_INTERVAL_DURATION)) {
-        batteryTemperatureLineChart.redraw();
-    }
+//     if (shouldRedrawChart(batteryContentSectionElement, batteryTemperatureLineChart, MAX_INTERVAL_DURATION)) {
+//         batteryTemperatureLineChart.redraw();
+//     }
 
-    if (shouldRedrawChart(pvContentSectionElement, pvLineChart, MAX_INTERVAL_DURATION)) {
-        pvLineChart.redraw();
-    }
+//     if (shouldRedrawChart(pvContentSectionElement, pvLineChart, MAX_INTERVAL_DURATION)) {
+//         pvLineChart.redraw();
+//     }
 
-    if (shouldRedrawChart(motorContentSectionElement, motorLineChart, MAX_INTERVAL_DURATION)) {
-        motorLineChart.redraw();
-    }
+//     if (shouldRedrawChart(motorContentSectionElement, motorLineChart, MAX_INTERVAL_DURATION)) {
+//         motorLineChart.redraw();
+//     }
 
-}, 1100);
+// }, 1100);

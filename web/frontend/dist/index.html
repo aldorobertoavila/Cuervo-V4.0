@@ -23,7 +23,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-remote-config-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-performance-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/init.js?useEmulator=true"></script>
+  <!-- <script defer src="https://www.gstatic.com/firebasejs/10.8.0/init.js?useEmulator=true"></script> -->
 
   <link rel="icon" href="images/favicon.png" sizes="32x32">
 
@@ -39,14 +39,15 @@
   <header class="page-header page-header--main-header">
     <nav class="page-navbar">
       <div class="page-navbar__header">
-        <!-- <a href="#" class="page-navbar__logo"><img src="images/logo.png" alt="Logo"></a> -->
+        <a href="/index.html" class="page-navbar__logo"><img src="images/utt_logo.png" alt="Logo"></a>
         <h1 class="page-navbar__title">Cuervo V4.0</h1>
       </div>
       <div class="page-navbar__items">
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/account_circle.png" alt="Account Icon"></a>
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/logout.png" alt="Logout Icon"></a>
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/download.png" alt="Download Icon"></a>
-        <a href="#" class="page-navbar__icon" role="button"><img src="images/settings.png" alt="Settings Icon"></a>
+        <a href="/" class="page-navbar__icon" role="button"><img id="photo" src="images/account_circle.png"
+            alt="Account Icon"></a>
+        <a href="/" class="page-navbar__icon" role="button"><img id="logout" src="images/logout.png"
+            alt="Logout Icon"></a>
+        <a href="/" class="page-navbar__icon" role="button"><img id="download" src="images/download.png"></a>
       </div>
     </nav>
   </header>
@@ -203,22 +204,10 @@
       </article>
     </section>
   </main>
-  <footer class="page-footer">
-
-  </footer>
-
-  <script>
-    const database = firebase.database();
-
-    database.ref('data').on('value', (snapshot) => {
-      const data = snapshot.val();
-
-      console.log(data)
-    });
-  </script>
 
   <script src="scripts/cards.js"></script>
   <script src="scripts/collapsible.js"></script>
+  <script src="scripts/database.js"></script>
   <script src="scripts/linechart.js"></script>
 </body>
 
