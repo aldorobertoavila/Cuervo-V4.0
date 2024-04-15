@@ -1,6 +1,11 @@
 {
   "rules": {
     ".read": "auth != null",
-    ".write": "auth != null"
+    ".write": "auth.uid === 'iot_device_uid'",
+    "data": {
+      "$timestamp": {
+        ".validate": "newData.hasChildren(['battery_temperature_min', 'battery_temperature_max', 'battery_temperature_average', 'battery_temperature1', 'battery_temperature2', 'battery_temperature3', 'battery_temperature4', 'motor_temperature', 'battery_bank_voltage', 'battery_bank_current', 'battery_bank_power', 'solar_panel_voltage', 'solar_panel_current', 'solar_panel_power', 'battery_level', 'linear_speed', 'heading'])"
+      }
+    }
   }
 }
