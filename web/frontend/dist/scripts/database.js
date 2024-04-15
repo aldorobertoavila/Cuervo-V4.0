@@ -421,6 +421,9 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
+const databaseRef = firebase.database().ref('/data');
+
+const downloadButtonElement = document.getElementById('download');
 const logoutButtonElement = document.getElementById('logout');
 
 logoutButtonElement.addEventListener('click', () => {
@@ -428,6 +431,31 @@ logoutButtonElement.addEventListener('click', () => {
         console.log("El usuerio ha cerrado sesión exitosamente");
     }).catch((error) => {
         console.error("Hubo un error al cerrar sessión:", error);
+    });
+});
+
+downloadButtonElement.addEventListener('click', (event) => {
+    function download(filename, data) {
+        const file = JSON.stringify(data, null, 2);
+        const blob = new Blob([file], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const element = document.createElement('a');
+
+        element.setAttribute('href', url);
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+    event.preventDefault();
+
+    databaseRef.once('value', snapshot => {
+        download("datos.json", snapshot.val());
     });
 });
 
@@ -451,9 +479,7 @@ const batteryTemperatureLineChart = createBatteryTemperatureLineChart(batteryTem
 const solarPanelLineChart = createBatteryChargingLineChart(solarPanelLineChartElement, {});
 const motorLineChart = createMotorLineChart(motorLineChartElement, {});
 
-var dataRef = firebase.database().ref('/data');
-
-dataRef.limitToLast(1).on('child_added', (snapshot) => {
+databaseRef.limitToLast(1).on('child_added', (snapshot) => {
     const formatTimeDifference = (newDateTime, oldDateTime) => {
         const differenceInSeconds = Math.floor((newDateTime - oldDateTime) / 1000);
 
@@ -504,8 +530,9 @@ dataRef.limitToLast(1).on('child_added', (snapshot) => {
     const roundFloat = (value, decimals) => parseFloat(value.toFixed(decimals));
 
     const data = snapshot.val();
+    const key = snapshot.key;
 
-    const date = new Date(snapshot.key);
+    const date = new Date(key);
     const time = date.getTime();
 
     updateCard(batteryCardElement, roundFloat(data.battery_level, 2));
