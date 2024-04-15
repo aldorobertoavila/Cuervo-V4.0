@@ -123,7 +123,7 @@ function createDefaultLineChartSettings(chartElement) {
     };
 }
 
-function createBatteryChargingLineChart(chartElement, initialData) {
+function createBatteryBankLineChart(chartElement) {
     const defaultSettings = createDefaultLineChartSettings(chartElement);
 
     const settings = Object.assign({}, defaultSettings, {
@@ -210,7 +210,7 @@ function createBatteryChargingLineChart(chartElement, initialData) {
     return Highcharts.stockChart(settings);
 }
 
-function createBatteryTemperatureLineChart(chartElement, initialData) {
+function createBatteryTemperatureLineChart(chartElement) {
     const defaultSettings = createDefaultLineChartSettings(chartElement);
 
     const settings = Object.assign({}, defaultSettings, {
@@ -302,7 +302,7 @@ function createBatteryTemperatureLineChart(chartElement, initialData) {
     return Highcharts.stockChart(settings);
 }
 
-function createMotorLineChart(chartElement, initialData) {
+function createMotorLineChart(chartElement) {
     const defaultSettings = createDefaultLineChartSettings(chartElement);
 
     const settings = Object.assign({}, defaultSettings, {
@@ -366,6 +366,7 @@ function createMotorLineChart(chartElement, initialData) {
     return Highcharts.stockChart(settings);
 }
 
+
 const FIREBASE_CONFIG = {
     apiKey: "AIzaSyBx5LuKE0u4o25-9ra5AUQ2UnnalLQ-MNc",
     authDomain: "cuervo-v4.firebaseapp.com",
@@ -407,6 +408,7 @@ Highcharts.setOptions({
 });
 
 const MAX_INTERVAL_DURATION = 15 * 60 * 1000;
+const INTERVAL_BETWEEN_POINTS = 1000;
 
 firebase.initializeApp(FIREBASE_CONFIG);
 
@@ -474,12 +476,12 @@ const batteryTemperatureLineChartElement = document.querySelector('.chart-block_
 const motorLineChartElement = document.querySelector('.chart-block__line-chart--motor');
 const solarPanelLineChartElement = document.querySelector('.chart-block__line-chart--pv');
 
-const batteryChargingLineChart = createBatteryChargingLineChart(batteryChargingLineChartElement, {});
-const batteryTemperatureLineChart = createBatteryTemperatureLineChart(batteryTemperatureLineChartElement, {});
-const solarPanelLineChart = createBatteryChargingLineChart(solarPanelLineChartElement, {});
-const motorLineChart = createMotorLineChart(motorLineChartElement, {});
+const batteryChargingLineChart = createBatteryBankLineChart(batteryChargingLineChartElement);
+const batteryTemperatureLineChart = createBatteryTemperatureLineChart(batteryTemperatureLineChartElement);
+const solarPanelLineChart = createBatteryBankLineChart(solarPanelLineChartElement);
+const motorLineChart = createMotorLineChart(motorLineChartElement);
 
-databaseRef.limitToLast(1).on('child_added', (snapshot) => {
+databaseRef.limitToLast(3600).orderByKey().on('child_added', (snapshot) => {
     const formatTimeDifference = (newDateTime, oldDateTime) => {
         const differenceInSeconds = Math.floor((newDateTime - oldDateTime) / 1000);
 
