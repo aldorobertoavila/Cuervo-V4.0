@@ -17,6 +17,10 @@
 }
 
 @media screen and (max-width: 750px) {
+    .page-section--login {
+        width: 85%;
+    }
+
     .page-section--overview {
         justify-content: center;
     }
